@@ -31,6 +31,7 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpElements()
+        hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
     
@@ -80,6 +81,9 @@ class SignUpViewController: UIViewController {
                     //there was an error
                     self.showErrorMessage("Please try again, we could not create your account")
                     
+                    self.animationView.stop()
+                    self.animationView.alpha = 0
+                    
                     self.email.alpha = 1
                     self.firstName.alpha = 1
                     self.surname.alpha = 1
@@ -100,6 +104,8 @@ class SignUpViewController: UIViewController {
                 
                     Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
                       // Notify the user that the mail has sent or couldn't because of an error.
+                        
+                        
                         let post: [String : Any] = [
                                                         "name" : self.firstName.text!,
                                                         "surname" : self.surname.text!,
@@ -108,7 +114,6 @@ class SignUpViewController: UIViewController {
                                                         "email": self.email.text!,
                                                         "country": self.selectCountry.text!,
                                                         "city": "",
-                                                        "password": self.password.text!,
                                                         "version": "iOS",
                                                         "isAdmin": 0,
                                                         "paid": 0,
@@ -117,9 +122,11 @@ class SignUpViewController: UIViewController {
                                                         ]
                             
                         
-                            let userId = result!.user.uid
-                            let ref = Database.database().reference().child("users").child(userId)
+                        let userId = result!.user.uid
+                        let ref = Database.database().reference().child("users").child(userId)
                             
+                        
+                        
                             //save user's data
                             ref.setValue(post) { (err, resp) in
                                         guard err == nil else {
@@ -130,14 +137,29 @@ class SignUpViewController: UIViewController {
                                         }
                                         print("No errors while posting, :")
                                         print(resp)
+                                        
+                                        
                                     }
                             
                         
                     })
                     
+                    self.animationView.stop()
+                    self.animationView.alpha = 0
                     
-                        
-                        
+                    self.email.alpha = 1
+                    self.firstName.alpha = 1
+                    self.surname.alpha = 1
+                    self.phoneNo.alpha = 1
+                    self.password.alpha = 1
+                    self.confirmPassword.alpha = 1
+                    self.CountryPicker.alpha = 1
+                    self.signUp.alpha = 1
+                    self.loginButton.alpha = 1
+                    self.errorMessage.alpha = 1
+                    self.selectCountry.alpha = 1
+                    
+                    self.showToast(message: "A verification email has been sent to you, please confirm your email.", seconds: 3)
                 }
             }
             
@@ -176,6 +198,7 @@ class SignUpViewController: UIViewController {
     func showErrorMessage(_ message: String){
         errorMessage.text = "Error:  " + message
         errorMessage.alpha = 1
+        showToast(message: message, seconds: 3)
     }
     
     
@@ -218,4 +241,6 @@ extension UIViewController {
         }
         
     }
+    
+   
 }

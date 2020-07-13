@@ -22,6 +22,9 @@
 		B8B3E2E824B9EA4800740A6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8B3E2E724B9EA4800740A6D /* Assets.xcassets */; };
 		B8B3E2EB24B9EA4800740A6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8B3E2E924B9EA4800740A6D /* LaunchScreen.storyboard */; };
 		B8B3E2F824B9EFC100740A6D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8B3E2F724B9EFC100740A6D /* GoogleService-Info.plist */; };
+		B8D258FE24BB58B3003314C2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D258FD24BB58B3003314C2 /* HomeViewController.swift */; };
+		B8D2590024BB66BA003314C2 /* SignalsItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D258FF24BB66BA003314C2 /* SignalsItemModel.swift */; };
+		B8D2590224BB687B003314C2 /* SignalsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D2590124BB687B003314C2 /* SignalsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +46,9 @@
 		B8B3E2EA24B9EA4800740A6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8B3E2EC24B9EA4800740A6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8B3E2F724B9EFC100740A6D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B8D258FD24BB58B3003314C2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B8D258FF24BB66BA003314C2 /* SignalsItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalsItemModel.swift; sourceTree = "<group>"; };
+		B8D2590124BB687B003314C2 /* SignalsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalsTableViewCell.swift; sourceTree = "<group>"; };
 		D7D84B1D525454A6E3642B3C /* Pods-InstantProfits.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstantProfits.debug.xcconfig"; path = "Target Support Files/Pods-InstantProfits/Pods-InstantProfits.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				B85FA87A24BA165800B3804B /* Utilities.swift */,
+				B8D258FF24BB66BA003314C2 /* SignalsItemModel.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -127,6 +134,8 @@
 				B85FA87724BA143C00B3804B /* LoginViewController.swift */,
 				B85FA87E24BA1E7600B3804B /* ForgotPasswordViewController.swift */,
 				B85FA88024BA1FA900B3804B /* SignUpViewController.swift */,
+				B8D258FD24BB58B3003314C2 /* HomeViewController.swift */,
+				B8D2590124BB687B003314C2 /* SignalsTableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -251,9 +260,12 @@
 			files = (
 				B85FA87B24BA165800B3804B /* Utilities.swift in Sources */,
 				B85FA87F24BA1E7600B3804B /* ForgotPasswordViewController.swift in Sources */,
+				B8D2590024BB66BA003314C2 /* SignalsItemModel.swift in Sources */,
 				B85FA88124BA1FA900B3804B /* SignUpViewController.swift in Sources */,
 				B8B3E2E324B9EA4400740A6D /* ViewController.swift in Sources */,
 				B8B3E2DF24B9EA4400740A6D /* AppDelegate.swift in Sources */,
+				B8D2590224BB687B003314C2 /* SignalsTableViewCell.swift in Sources */,
+				B8D258FE24BB58B3003314C2 /* HomeViewController.swift in Sources */,
 				B85FA87424B9F11800B3804B /* SplashScreenViewController.swift in Sources */,
 				B85FA87824BA143C00B3804B /* LoginViewController.swift in Sources */,
 				B8B3E2E124B9EA4400740A6D /* SceneDelegate.swift in Sources */,

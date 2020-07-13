@@ -17,10 +17,15 @@ class SplashScreenViewController: UIViewController {
         super.viewDidLoad()
 
         setUpElements()
-        checkLogin()
+        
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        checkLogin()
+    }
     
     func setUpElements(){
         self.icon.center = self.view.center
@@ -28,46 +33,35 @@ class SplashScreenViewController: UIViewController {
     
 
    func checkLogin(){
-         let userID = Auth.auth().currentUser?.uid
+        let userID = Auth.auth().currentUser?.uid
          
          
-         if userID != nil{
+        if userID != nil && Auth.auth().currentUser?.isEmailVerified == true{
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+                self.transitionToHome()
+            })
             
-            let refUser = Database.database().reference().child("users").child(userID!)
-            
-            refUser.observeSingleEvent(of: .value){
-            (snapshot) in
-                                           
-                let data = snapshot.value as? [String:Any]
-                let verified = (data?["verified"])
-                var _verified = (verified as? String)!
-                
-                if(_verified == "false"){
-                    let alert = UIAlertController(title: "Ooops...", message: "You have not verified you mail, check your email for a link or click resend to get a new link.", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: { (upVote) in
-                        alert.dismiss(animated: true, completion: nil)
-                    }))
-                    alert.addAction(UIAlertAction(title: "Resend", style: UIAlertAction.Style.default, handler: { (downVote) in
-                        Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
-                            self.showToast(message: "Done", seconds: 2)
-                        })
-                        
-                       
-                    }))
-                    self.present(alert, animated: true, completion: nil)
-                    
-                }else{
-                    print(userID!)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-                        self.transitionToHome()
-                    })
-                }
-                
-            }
-                
              
-         }else{
-             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3){
+        }else if userID != nil && Auth.auth().currentUser?.isEmailVerified == false{
+            let alert = UIAlertController(title: "Ooops...", message: "You have not verified you mail, check your email for a link or click resend to get a new link.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: { (upVote) in
+                self.performSegue(withIdentifier: "launchLogin", sender: nil)
+                alert.dismiss(animated: true, completion: nil)
+            }))
+            alert.addAction(UIAlertAction(title: "Resend", style: UIAlertAction.Style.default, handler: { (downVote) in
+                Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
+                    self.showToast(message: "Done", seconds: 2)
+                    self.performSegue(withIdentifier: "launchLogin", sender: nil)
+                })
+                
+               
+            }))
+            self.present(alert, animated: true, completion: nil)
+        
+        
+        
+        }else{
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3){
                  self.performSegue(withIdentifier: "launchLogin", sender: nil)
              }
          }

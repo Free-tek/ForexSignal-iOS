@@ -82,42 +82,41 @@ class LoginViewController: UIViewController {
                  guard self != nil else { return }
                
                  if error == nil{
-                    let userID = Auth.auth().currentUser?.uid
-                    let refUser = Database.database().reference().child("users").child(userID!)
                     
-                    refUser.observeSingleEvent(of: .value){
-                    (snapshot) in
-                                                   
-                        let data = snapshot.value as? [String:Any]
-                        let verified = (data?["verified"])
-                        var _verified = (verified as? String)!
-                        
-                        if(_verified == "false"){
-                            let alert = UIAlertController(title: "Ooops...", message: "You have not verified you mail, check your email for a link or click resend to get a new link.", preferredStyle: UIAlertController.Style.alert)
-                            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: { (upVote) in
-                                alert.dismiss(animated: true, completion: nil)
-                            }))
-                            alert.addAction(UIAlertAction(title: "Resend", style: UIAlertAction.Style.default, handler: { (downVote) in
-                                Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
-                                    self!.showToast(message: "Done", seconds: 2)
-                                })
-                                
-                               
-                            }))
-                            self!.present(alert, animated: true, completion: nil)
+                    if Auth.auth().currentUser?.isEmailVerified == false{
+                        let alert = UIAlertController(title: "Ooops...", message: "You have not verified you mail, check your email for a link or click resend to get a new link.", preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: { (upVote) in
+                            alert.dismiss(animated: true, completion: nil)
                             
-                        }else{
-                            //self?.transitionToHome()
-                        }
-                      
+                        }))
+                        alert.addAction(UIAlertAction(title: "Resend", style: UIAlertAction.Style.default, handler: { (downVote) in
+                            Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
+                                self!.showToast(message: "Done", seconds: 2)
+                            })
+                            
+                           
+                        }))
+                        self!.present(alert, animated: true, completion: nil)
+                        self?.animationView.stop()
+                        self?.animationView.alpha = 0
                         
+                        //switch views back on
+                        self?.errorMessage.alpha = 1
+                        self?.email.alpha = 1
+                        self?.password.alpha = 1
+                        self?.forgotPassword.alpha = 1
+                        self?.login.alpha = 1
+                        self?.signUp.alpha = 1
+                        self?.googleSignIn.alpha = 1
+                        self?.logo.alpha = 1
+                        self?.or.alpha = 1
+                    }else{
+                        self?.transitionToHome()
                     }
-                   
-                     
-                     
-                     
+                    
+                    
                  }else{
-                     // user sign in sucessfully
+                     // user sign in unsucessful
                      self?.showErrorMessage(error!.localizedDescription)
                      print("Error during login")
                      self?.animationView.stop()
@@ -149,6 +148,23 @@ class LoginViewController: UIViewController {
         
         
     }
+    
+    func transitionToHome(){
+        // Stop and hide indicator
+        self.animationView.stop()
+        self.animationView.alpha = 0
+        
+        let storyboard = UIStoryboard(name: "Home", bundle: Bundle.main)
+        let viewController = storyboard.instantiateInitialViewController()
+
+        if let viewController = viewController {
+            view.window?.rootViewController = viewController
+              view.window?.makeKeyAndVisible()
+        }
+    }
+
+    
+    
     
     @IBAction func signUpFunc(_ sender: Any) {
     }

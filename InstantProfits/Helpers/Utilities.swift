@@ -41,6 +41,26 @@ class Utilities {
         button.tintColor = UIColor.white
     }
     
+    static func styleFilledButtonBlack(_ button: UIButton){
+        
+        //Filled rounded corner Style
+        button.backgroundColor = UIColor.black
+        button.layer.cornerRadius = 15.0
+        button.tintColor = UIColor.white
+    }
+    
+    static func styleFilledButtonHollowEdge(_ button: UIButton){
+        
+        //Filled rounded corner Style
+        button.backgroundColor = UIColor.white
+        button.layer.cornerRadius = 15.0
+        button.layer.borderWidth = 1.5
+        button.layer.borderColor = UIColor.black.cgColor
+        button.tintColor = UIColor.black
+        
+        
+    }
+    
     static func styleFilledLabel(_ label: UILabel){
         
         label.layer.masksToBounds = true
