@@ -79,7 +79,8 @@ class SignUpViewController: UIViewController {
                 //check for errors
                 if err != nil{
                     //there was an error
-                    self.showErrorMessage("Please try again, we could not create your account")
+                    self.showToast(message: "Please try again, we could not create your account", seconds: 1.5)
+                    //self.showErrorMessage("Please try again, we could not create your account")
                     
                     self.animationView.stop()
                     self.animationView.alpha = 0
@@ -114,11 +115,12 @@ class SignUpViewController: UIViewController {
                                                         "email": self.email.text!,
                                                         "country": self.selectCountry.text!,
                                                         "city": "",
-                                                        "version": "iOS",
                                                         "isAdmin": 0,
                                                         "paid": 0,
                                                         "remainingSignals": 0,
-                                                        "verified": "false"
+                                                        "verified": "false",
+                                                        "signalsLeft": 0,
+                                                        "version" : "iOS V1"
                                                         ]
                             
                         
@@ -164,7 +166,8 @@ class SignUpViewController: UIViewController {
             }
             
         }else{
-            showErrorMessage(validateFields()!)
+            showToast(message: validateFields()!, seconds: 1.5)
+            //showErrorMessage(validateFields()!)
         }
     }
    

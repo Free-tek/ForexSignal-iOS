@@ -104,6 +104,7 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
+  - OneSignal (2.14.3)
   - Protobuf (3.10.0)
 
 DEPENDENCIES:
@@ -113,6 +114,7 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Firebase/Storage
   - lottie-ios
+  - OneSignal (< 3.0, >= 2.5.2)
 
 SPEC REPOS:
   trunk:
@@ -136,6 +138,7 @@ SPEC REPOS:
     - leveldb-library
     - lottie-ios
     - nanopb
+    - OneSignal
     - Protobuf
 
 SPEC CHECKSUMS:
@@ -159,8 +162,9 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   lottie-ios: 85ce835dd8c53e02509f20729fc7d6a4e6645a0a
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  OneSignal: 7dfe466265c05f02b95a274b9c997a0619ad2117
   Protobuf: a4dc852ad69c027ca2166ed287b856697814375b
 
-PODFILE CHECKSUM: d2805729ef344bad47c06599973b93ff2782e53f
+PODFILE CHECKSUM: 75fc3c2d65e162bc44aa784a4b804ecb25c86a5b
 
 COCOAPODS: 1.8.4

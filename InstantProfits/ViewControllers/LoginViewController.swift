@@ -117,7 +117,8 @@ class LoginViewController: UIViewController {
                     
                  }else{
                      // user sign in unsucessful
-                     self?.showErrorMessage(error!.localizedDescription)
+                     self?.showToast(message: error!.localizedDescription, seconds: 1.5)
+                     //self?.showErrorMessage(error!.localizedDescription)
                      print("Error during login")
                      self?.animationView.stop()
                      self?.animationView.alpha = 0
@@ -142,7 +143,8 @@ class LoginViewController: UIViewController {
              
              
          }else{
-             showErrorMessage(validateFields()!)
+             showToast(message: validateFields()!, seconds: 1.5)
+             //showErrorMessage(validateFields()!)
              
          }
         

@@ -40,6 +40,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func setUpElements(){
+        //show that app user uses iOS
+        let userID = Auth.auth().currentUser?.uid
+        let refUser = Database.database().reference().child("users").child(userID!)
+        refUser.child("version").setValue("iOS V1")
+                
         
         Utilities.styleFilledButtonBlack(newSignal)
         Utilities.styleFilledButtonHollowEdge(oldSignal)
@@ -50,6 +55,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         //----set up activity indicator-----
         activityIndicator.center = self.view.center;
         activityIndicator.hidesWhenStopped = true;
+        activityIndicator.color = UIColor.black
+        
         if #available(iOS 13.0, *) {
             activityIndicator.style = UIActivityIndicatorView.Style.medium
         } else {
@@ -60,7 +67,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         //check if user has paid
-        let userID = Auth.auth().currentUser?.uid
         let refPaid = ref.child("users").child(userID!)
         
         
@@ -123,7 +129,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.premiumView.isHidden = true
                 
                 let xPosition = self.signalsView.frame.origin.x
-                    let yPosition = self.signalsView.frame.origin.y - 150 // Slide Up - 20px
+                    let yPosition = self.signalsView.frame.origin.y - 130 // Slide Up - 20px
 
                     let width = self.signalsView.frame.size.width
                     let height = self.signalsView.frame.size.height
