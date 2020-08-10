@@ -60,7 +60,7 @@ class SignUpViewController: UIViewController {
             CountryPicker.alpha = 0.2
             signUp.alpha = 0.2
             loginButton.alpha = 0.2
-            errorMessage.alpha = 0.2
+            errorMessage.alpha = 0
             selectCountry.alpha = 0.2
             
             
@@ -94,7 +94,7 @@ class SignUpViewController: UIViewController {
                     self.CountryPicker.alpha = 1
                     self.signUp.alpha = 1
                     self.loginButton.alpha = 1
-                    self.errorMessage.alpha = 1
+                    self.errorMessage.alpha = 0
                     self.selectCountry.alpha = 1
                     
                     self.showToast(message: "Please try again, we could not create your account", seconds: 1)
@@ -158,10 +158,13 @@ class SignUpViewController: UIViewController {
                     self.CountryPicker.alpha = 1
                     self.signUp.alpha = 1
                     self.loginButton.alpha = 1
-                    self.errorMessage.alpha = 1
+                    self.errorMessage.alpha = 0
                     self.selectCountry.alpha = 1
                     
                     self.showToast(message: "A verification email has been sent to you, please confirm your email.", seconds: 3)
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3){
+                        self.performSegue(withIdentifier: "launchLogin", sender: nil)
+                    }
                 }
             }
             
@@ -200,7 +203,7 @@ class SignUpViewController: UIViewController {
     
     func showErrorMessage(_ message: String){
         errorMessage.text = "Error:  " + message
-        errorMessage.alpha = 1
+        errorMessage.alpha = 0
         showToast(message: message, seconds: 3)
     }
     

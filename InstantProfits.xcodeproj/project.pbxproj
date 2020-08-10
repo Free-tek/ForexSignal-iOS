@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		35D06A957E24BCC7130B4591 /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F3B9978EA092C3150CA2F55 /* Pods_OneSignalNotificationServiceExtension.framework */; };
 		83A55A0704DFC5CDA82CA435 /* Pods_InstantProfits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26CF65FF16366AC28C00F344 /* Pods_InstantProfits.framework */; };
+		B80D559B24E156C90083A707 /* sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = B80D559A24E156C90083A707 /* sound.wav */; };
 		B85FA87424B9F11800B3804B /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85FA87324B9F11800B3804B /* SplashScreenViewController.swift */; };
 		B85FA87624B9F17A00B3804B /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B85FA87524B9F17A00B3804B /* Home.storyboard */; };
 		B85FA87824BA143C00B3804B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85FA87724BA143C00B3804B /* LoginViewController.swift */; };
@@ -22,6 +23,7 @@
 		B8B3E2E624B9EA4400740A6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8B3E2E424B9EA4400740A6D /* Main.storyboard */; };
 		B8B3E2E824B9EA4800740A6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8B3E2E724B9EA4800740A6D /* Assets.xcassets */; };
 		B8B3E2EB24B9EA4800740A6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8B3E2E924B9EA4800740A6D /* LaunchScreen.storyboard */; };
+		B8B9117624DCD0BA0024C53A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8B9117524DCD0BA0024C53A /* GoogleService-Info.plist */; };
 		B8D258FE24BB58B3003314C2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D258FD24BB58B3003314C2 /* HomeViewController.swift */; };
 		B8D2590024BB66BA003314C2 /* SignalsItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D258FF24BB66BA003314C2 /* SignalsItemModel.swift */; };
 		B8D2590224BB687B003314C2 /* SignalsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D2590124BB687B003314C2 /* SignalsTableViewCell.swift */; };
@@ -29,7 +31,6 @@
 		B8D368A024BD06E600748F56 /* PlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3689F24BD06E600748F56 /* PlanTableViewCell.swift */; };
 		B8D368A224BD077900748F56 /* PremiumPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D368A124BD077900748F56 /* PremiumPlanViewController.swift */; };
 		B8D368A524BD20ED00748F56 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D368A424BD20ED00748F56 /* PaymentViewController.swift */; };
-		B8D368A724BD3D6500748F56 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8D368A624BD3D6500748F56 /* GoogleService-Info.plist */; };
 		B8D368A924BD48BC00748F56 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D368A824BD48BC00748F56 /* NotificationsTableViewCell.swift */; };
 		B8D368AB24BD493E00748F56 /* NotificationsItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D368AA24BD493E00748F56 /* NotificationsItemModel.swift */; };
 		B8D368AD24BD49C100748F56 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D368AC24BD49C100748F56 /* NotificationsViewController.swift */; };
@@ -68,6 +69,7 @@
 		26CF65FF16366AC28C00F344 /* Pods_InstantProfits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstantProfits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F942F1D99BFD8C4F06F88BA /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		A854841D64770214370A1740 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
+		B80D559A24E156C90083A707 /* sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound.wav; sourceTree = "<group>"; };
 		B85FA87324B9F11800B3804B /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		B85FA87524B9F17A00B3804B /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		B85FA87724BA143C00B3804B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		B8B3E2E724B9EA4800740A6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8B3E2EA24B9EA4800740A6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8B3E2EC24B9EA4800740A6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8B9117524DCD0BA0024C53A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B8D258FD24BB58B3003314C2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B8D258FF24BB66BA003314C2 /* SignalsItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalsItemModel.swift; sourceTree = "<group>"; };
 		B8D2590124BB687B003314C2 /* SignalsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalsTableViewCell.swift; sourceTree = "<group>"; };
@@ -91,7 +94,6 @@
 		B8D368A124BD077900748F56 /* PremiumPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumPlanViewController.swift; sourceTree = "<group>"; };
 		B8D368A324BD204300748F56 /* InstantProfits.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = InstantProfits.entitlements; sourceTree = "<group>"; };
 		B8D368A424BD20ED00748F56 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
-		B8D368A624BD3D6500748F56 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B8D368A824BD48BC00748F56 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		B8D368AA24BD493E00748F56 /* NotificationsItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsItemModel.swift; sourceTree = "<group>"; };
 		B8D368AC24BD49C100748F56 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
@@ -185,8 +187,9 @@
 				B8B3E2E424B9EA4400740A6D /* Main.storyboard */,
 				B8B3E2E724B9EA4800740A6D /* Assets.xcassets */,
 				B8B3E2E924B9EA4800740A6D /* LaunchScreen.storyboard */,
+				B80D559A24E156C90083A707 /* sound.wav */,
 				B8B3E2EC24B9EA4800740A6D /* Info.plist */,
-				B8D368A624BD3D6500748F56 /* GoogleService-Info.plist */,
+				B8B9117524DCD0BA0024C53A /* GoogleService-Info.plist */,
 				B85FA87C24BA181100B3804B /* loading.json */,
 				B85FA87524B9F17A00B3804B /* Home.storyboard */,
 			);
@@ -234,6 +237,7 @@
 				B8B3E2D924B9EA4400740A6D /* Resources */,
 				30869CED858C9B7DB4D504E8 /* [CP] Embed Pods Frameworks */,
 				B8D368BF24BDB8A200748F56 /* Embed App Extensions */,
+				E3E567C5CA6506AA18EBDFB4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -306,11 +310,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8B3E2EB24B9EA4800740A6D /* LaunchScreen.storyboard in Resources */,
+				B8B9117624DCD0BA0024C53A /* GoogleService-Info.plist in Resources */,
 				B85FA87624B9F17A00B3804B /* Home.storyboard in Resources */,
 				B85FA87D24BA181100B3804B /* loading.json in Resources */,
 				B8B3E2E824B9EA4800740A6D /* Assets.xcassets in Resources */,
+				B80D559B24E156C90083A707 /* sound.wav in Resources */,
 				B8B3E2E624B9EA4400740A6D /* Main.storyboard in Resources */,
-				B8D368A724BD3D6500748F56 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +388,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3E567C5CA6506AA18EBDFB4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-InstantProfits/Pods-InstantProfits-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-InstantProfits/Pods-InstantProfits-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-InstantProfits/Pods-InstantProfits-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

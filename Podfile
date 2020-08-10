@@ -12,6 +12,7 @@ target 'InstantProfits' do
   pod 'Firebase/Storage'
   pod 'lottie-ios'
   pod 'Firebase/Messaging'
+  pod 'GoogleSignIn'
 
 end
 

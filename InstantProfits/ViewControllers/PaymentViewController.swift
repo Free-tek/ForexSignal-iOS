@@ -85,7 +85,6 @@ class PaymentViewController: UIViewController, SKPaymentTransactionObserver {
                 
                 if planName == "30 Premium Signals"{
                     ref.child("remainingSignals").setValue(30)
-                    
                 }else if planName == "60 Premium Signals"{
                     ref.child("remainingSignals").setValue(60)
                 }else if planName == "90 Premium Signals"{

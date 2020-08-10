@@ -9,8 +9,11 @@
 import UIKit
 import Firebase
 import Lottie
+import GoogleSignIn
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, GIDSignInDelegate {
+    
+    
 
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -28,6 +31,10 @@ class LoginViewController: UIViewController {
         
         setUpElements()
         self.hideKeyboardWhenTappedAround()
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance().delegate = self
+        
+        
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -63,7 +70,7 @@ class LoginViewController: UIViewController {
              
              //switch views off
 
-             errorMessage.alpha = 0.2
+             errorMessage.alpha = 0
              email.alpha = 0.2
              password.alpha = 0.2
              forgotPassword.alpha = 0.2
@@ -101,7 +108,7 @@ class LoginViewController: UIViewController {
                         self?.animationView.alpha = 0
                         
                         //switch views back on
-                        self?.errorMessage.alpha = 1
+                        self?.errorMessage.alpha = 0
                         self?.email.alpha = 1
                         self?.password.alpha = 1
                         self?.forgotPassword.alpha = 1
@@ -124,7 +131,7 @@ class LoginViewController: UIViewController {
                      self?.animationView.alpha = 0
                      
                      //switch views back on
-                     self?.errorMessage.alpha = 1
+                     self?.errorMessage.alpha = 0
                      self?.email.alpha = 1
                      self?.password.alpha = 1
                      self?.forgotPassword.alpha = 1
@@ -166,12 +173,86 @@ class LoginViewController: UIViewController {
     }
 
     
-    
-    
-    @IBAction func signUpFunc(_ sender: Any) {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        guard let auth = user.authentication else {
+            return
+            
+        }
+        let credentials = GoogleAuthProvider.credential(withIDToken: auth.idToken, accessToken: auth.accessToken)
+        Auth.auth().signIn(with: credentials) { (authResult, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("Login Successful.")
+                //get users detail and save it to firebase
+                let user: GIDGoogleUser = GIDSignIn.sharedInstance()!.currentUser
+                let surname = user.profile.familyName
+                let name = user.profile.givenName
+                let email = user.profile.email
+                
+                
+                let userId = Auth.auth().currentUser?.uid
+                let ref = Database.database().reference().child("users")
+            
+                
+                ref.observeSingleEvent(of: .value, with: { (snapshot) in
+
+                     if snapshot.hasChild(userId!){
+                        
+                        
+                     }else{
+                       
+                        let post: [String : Any] = [
+                            "name" : name ?? "",
+                             "surname" : surname ?? "",
+                             "phoneNumber" : "",
+                             "password": "Google Sign In",
+                             "email": email ?? "",
+                             "country": "",
+                             "city": "",
+                             "isAdmin": 0,
+                             "paid": 0,
+                             "remainingSignals": 0,
+                             "verified": "true",
+                             "signalsLeft": 0,
+                             "version" : "iOS V1"
+                             ]
+                             
+                         
+                         let ref = Database.database().reference().child("users").child(userId!)
+                             
+                             //save user's data
+                             ref.setValue(post) { (err, resp) in
+                                if err == nil {
+                                    self.transitionToHome()
+                                }else {
+                                     print("Posting failed : ")
+                                     return
+                                 }
+                                 print("No errors while posting, :")
+                                 print(resp)
+                                 
+
+                                 
+                                 
+                             }
+                     }
+
+
+                 })
+                
+                            }
+            
+        }
     }
+    
    
     @IBAction func googleSignInFunc(_ sender: Any) {
+        GIDSignIn.sharedInstance().signIn()
     }
     
     func validateFields() -> String?{
