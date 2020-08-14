@@ -857,7 +857,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJf-BA-GoZ">
-                                                <rect key="frame" x="8" y="518" width="145" height="39"/>
+                                                <rect key="frame" x="8" y="653" width="145" height="39"/>
                                                 <color key="backgroundColor" red="0.98415709360000003" green="0.6452393354" blue="0.20542489420000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="39" id="1Jm-3B-TUk"/>
@@ -871,7 +871,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGY-G4-WiC">
-                                                <rect key="frame" x="254" y="518" width="145" height="40"/>
+                                                <rect key="frame" x="254" y="652" width="145" height="40"/>
                                                 <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="6eF-ga-nRj"/>
@@ -885,7 +885,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vOL-uP-B7a">
-                                                <rect key="frame" x="8" y="458" width="155" height="40"/>
+                                                <rect key="frame" x="8" y="496" width="155" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="155" id="Jqx-m7-k07"/>
                                                     <constraint firstAttribute="height" constant="40" id="Yig-M0-tPJ"/>
@@ -909,7 +909,7 @@
                                             <constraint firstItem="FCZ-qO-PYA" firstAttribute="leading" secondItem="rvd-jN-gFx" secondAttribute="leading" constant="8" id="ENq-ci-KST"/>
                                             <constraint firstItem="a2W-KH-8c0" firstAttribute="centerX" secondItem="rvd-jN-gFx" secondAttribute="centerX" id="FVb-D4-m4y"/>
                                             <constraint firstItem="uXB-Vs-xwD" firstAttribute="leading" secondItem="rvd-jN-gFx" secondAttribute="leading" constant="8" id="GPa-oA-GTP"/>
-                                            <constraint firstAttribute="bottom" secondItem="KJf-BA-GoZ" secondAttribute="bottom" constant="143" id="JBg-el-MHW"/>
+                                            <constraint firstAttribute="bottom" secondItem="KJf-BA-GoZ" secondAttribute="bottom" constant="8" id="JBg-el-MHW"/>
                                             <constraint firstItem="ZbP-Jn-NIk" firstAttribute="leading" secondItem="OUa-es-UMl" secondAttribute="trailing" constant="14" id="MPJ-AJ-PLx"/>
                                             <constraint firstAttribute="trailing" secondItem="6XF-t4-TGT" secondAttribute="trailing" constant="43" id="Mpz-l5-XEM"/>
                                             <constraint firstItem="vOL-uP-B7a" firstAttribute="leading" secondItem="rvd-jN-gFx" secondAttribute="leading" constant="8" id="QyB-8g-ITj"/>
@@ -917,8 +917,8 @@
                                             <constraint firstAttribute="height" constant="700" id="Rwi-mo-Dho"/>
                                             <constraint firstAttribute="trailing" secondItem="bGY-G4-WiC" secondAttribute="trailing" constant="15" id="SlW-Du-SUM"/>
                                             <constraint firstItem="SEC-J9-SZb" firstAttribute="top" secondItem="t0v-mV-Maj" secondAttribute="bottom" constant="26" id="SoQ-z0-ZmP"/>
-                                            <constraint firstAttribute="bottom" secondItem="bGY-G4-WiC" secondAttribute="bottom" constant="142" id="Tte-fv-kb0"/>
-                                            <constraint firstItem="vOL-uP-B7a" firstAttribute="top" secondItem="a2W-KH-8c0" secondAttribute="bottom" constant="25" id="Uqs-Zk-F0T"/>
+                                            <constraint firstAttribute="bottom" secondItem="bGY-G4-WiC" secondAttribute="bottom" constant="8" id="Tte-fv-kb0"/>
+                                            <constraint firstItem="vOL-uP-B7a" firstAttribute="top" secondItem="a2W-KH-8c0" secondAttribute="bottom" constant="63" id="Uqs-Zk-F0T"/>
                                             <constraint firstItem="6XF-t4-TGT" firstAttribute="top" secondItem="5BC-RA-eUX" secondAttribute="bottom" constant="26" id="VT2-p6-y7x"/>
                                             <constraint firstItem="KJf-BA-GoZ" firstAttribute="leading" secondItem="rvd-jN-gFx" secondAttribute="leading" constant="8" id="W28-Ar-E4Z"/>
                                             <constraint firstItem="OUa-es-UMl" firstAttribute="leading" secondItem="rvd-jN-gFx" secondAttribute="leading" constant="8" id="Ytd-Ga-VRw"/>

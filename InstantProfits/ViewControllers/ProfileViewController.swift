@@ -119,7 +119,7 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func contactUsFunc(_ sender: Any) {
-        showToast(message: "Contact us at instantprofitsinnc@gmail.com", seconds: 3)
+        showToast(message: "Contact us at instantprofitsinc@gmail.com", seconds: 3)
     }
     
     

@@ -17,6 +17,7 @@
 		B85FA87D24BA181100B3804B /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = B85FA87C24BA181100B3804B /* loading.json */; };
 		B85FA87F24BA1E7600B3804B /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85FA87E24BA1E7600B3804B /* ForgotPasswordViewController.swift */; };
 		B85FA88124BA1FA900B3804B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85FA88024BA1FA900B3804B /* SignUpViewController.swift */; };
+		B8B3B6A024E6A9F5003D566A /* icon.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = B8B3B69F24E6A9F4003D566A /* icon.jpeg */; };
 		B8B3E2DF24B9EA4400740A6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B3E2DE24B9EA4400740A6D /* AppDelegate.swift */; };
 		B8B3E2E124B9EA4400740A6D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B3E2E024B9EA4400740A6D /* SceneDelegate.swift */; };
 		B8B3E2E324B9EA4400740A6D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B3E2E224B9EA4400740A6D /* ViewController.swift */; };
@@ -77,6 +78,7 @@
 		B85FA87C24BA181100B3804B /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		B85FA87E24BA1E7600B3804B /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		B85FA88024BA1FA900B3804B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		B8B3B69F24E6A9F4003D566A /* icon.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = icon.jpeg; sourceTree = "<group>"; };
 		B8B3E2DB24B9EA4400740A6D /* InstantProfits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstantProfits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8B3E2DE24B9EA4400740A6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8B3E2E024B9EA4400740A6D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				B8B3E2E024B9EA4400740A6D /* SceneDelegate.swift */,
 				B8B3E2E224B9EA4400740A6D /* ViewController.swift */,
 				B8B3E2E424B9EA4400740A6D /* Main.storyboard */,
+				B8B3B69F24E6A9F4003D566A /* icon.jpeg */,
 				B8B3E2E724B9EA4800740A6D /* Assets.xcassets */,
 				B8B3E2E924B9EA4800740A6D /* LaunchScreen.storyboard */,
 				B80D559A24E156C90083A707 /* sound.wav */,
@@ -311,6 +314,7 @@
 			files = (
 				B8B3E2EB24B9EA4800740A6D /* LaunchScreen.storyboard in Resources */,
 				B8B9117624DCD0BA0024C53A /* GoogleService-Info.plist in Resources */,
+				B8B3B6A024E6A9F5003D566A /* icon.jpeg in Resources */,
 				B85FA87624B9F17A00B3804B /* Home.storyboard in Resources */,
 				B85FA87D24BA181100B3804B /* loading.json in Resources */,
 				B8B3E2E824B9EA4800740A6D /* Assets.xcassets in Resources */,

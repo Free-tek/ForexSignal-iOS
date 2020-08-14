@@ -13,8 +13,8 @@ import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
-    
-    
+
+
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -22,42 +22,59 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         FirebaseApp.configure()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
-        
-        
+
+
         //Remove this method to stop OneSignal Debugging
         OneSignal.setLogLevel(.LL_VERBOSE, visualLevel: .LL_NONE)
-        
-        
-        
-        
-        
+
+        //reduce users signals once message is recieved
+        let notificationReceivedBlock: OSHandleNotificationReceivedBlock = { notification in
+            
+            if notification!.payload.title.lowercased().contains("premium") || notification!.payload.body.lowercased().contains("premium") {
+
+                let userID = Auth.auth().currentUser?.uid
+                let ref = Database.database().reference().child("users").child(userID!)
+                ref.observeSingleEvent(of: .value) {
+                    (snapshot) in
+                    let data = snapshot.value as? [String: Any]
+
+                    let _remainingSignals = data?["remainingSignals"] as? Int
+                    if(_remainingSignals! > 0) {
+                        ref.child("remainingSignals").setValue(_remainingSignals! - 1)
+                    }
+                }
+            }
+
+        }
+
+
         //START OneSignal initialization code
         let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false, kOSSettingsKeyInAppLaunchURL: false]
-            // Replace 'YOUR_ONESIGNAL_APP_ID' with your OneSignal App ID.
-            OneSignal.initWithLaunchOptions(launchOptions,
-              appId: "bf4684f0-67a6-475f-996a-d8fbf5f961b6",
-              handleNotificationAction: nil,
-              settings: onesignalInitSettings)
-            OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
+        // Replace 'YOUR_ONESIGNAL_APP_ID' with your OneSignal App ID.
+        OneSignal.initWithLaunchOptions(launchOptions,
+            appId: "bf4684f0-67a6-475f-996a-d8fbf5f961b6",
+            handleNotificationReceived: notificationReceivedBlock,
+            handleNotificationAction: nil,
+            settings: onesignalInitSettings)
+        OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
 
-            // The promptForPushNotifications function code will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 6)
-        
-            
-        
-          
-    
+        // The promptForPushNotifications function code will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 6)
+
+
+
+
         //END OneSignal initializataion code
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
         return true
     }
-    
-    
+
+
 
     // MARK: UISceneSession Lifecycle
 
@@ -74,30 +91,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-    
+
     @available(iOS 9.0, *)
-    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
-      -> Bool {
-      return GIDSignIn.sharedInstance().handle(url)
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any])
+        -> Bool {
+            return GIDSignIn.sharedInstance().handle(url)
     }
 
-    
+
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         // ...
         if let error = error {
-          // ...
-          return
+            // ...
+            return
         }
 
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                          accessToken: authentication.accessToken)
+            accessToken: authentication.accessToken)
         // ...
     }
-    
+
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
         // ...
+    }
+
+    let notificationReceivedBlock: OSHandleNotificationReceivedBlock = { notification in
+        print("Received Notification - \(notification?.payload.notificationID) - \(notification?.payload.title)")
     }
 
 

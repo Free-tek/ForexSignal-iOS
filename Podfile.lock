@@ -131,6 +131,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - GoogleSignIn
   - lottie-ios
+  - OneSignal (< 3.0, >= 2.11.2)
   - OneSignal (< 3.0, >= 2.5.2)
 
 SPEC REPOS:
@@ -188,6 +189,6 @@ SPEC CHECKSUMS:
   OneSignal: 7dfe466265c05f02b95a274b9c997a0619ad2117
   Protobuf: a4dc852ad69c027ca2166ed287b856697814375b
 
-PODFILE CHECKSUM: 374aaa1ab374cea5c4ff63ac98e7455773316c59
+PODFILE CHECKSUM: 09bbe0df7b839126d507e77c85bb2f4e8f435d0d
 
 COCOAPODS: 1.9.3

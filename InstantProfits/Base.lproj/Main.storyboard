@@ -403,13 +403,27 @@
                                     <constraint firstItem="nTC-bI-2GS" firstAttribute="centerX" secondItem="oUu-tn-ntM" secondAttribute="centerX" id="xs1-J6-hAV"/>
                                 </constraints>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1EN-Dt-0rD">
+                                <rect key="frame" x="30" y="30" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="RNz-QA-Qiy"/>
+                                    <constraint firstAttribute="width" constant="20" id="huY-Zs-KGO"/>
+                                </constraints>
+                                <color key="tintColor" red="0.20424863509999999" green="0.20424863509999999" blue="0.20424863509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button" image="icons8-undo"/>
+                                <connections>
+                                    <segue destination="LdU-PF-IRs" kind="presentation" id="3E4-PS-kl2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="1EN-Dt-0rD" firstAttribute="top" secondItem="ijo-le-ISZ" secondAttribute="top" constant="30" id="KU6-WB-0zr"/>
                             <constraint firstItem="oUu-tn-ntM" firstAttribute="centerX" secondItem="ijo-le-ISZ" secondAttribute="centerX" id="XBg-a0-Fig"/>
                             <constraint firstItem="oUu-tn-ntM" firstAttribute="top" secondItem="tHG-12-nMJ" secondAttribute="top" id="c1Q-xO-AZg"/>
                             <constraint firstItem="oUu-tn-ntM" firstAttribute="leading" secondItem="tHG-12-nMJ" secondAttribute="leading" id="gHq-aa-wjg"/>
                             <constraint firstItem="tHG-12-nMJ" firstAttribute="bottom" secondItem="oUu-tn-ntM" secondAttribute="bottom" constant="70" id="mWd-x2-oh9"/>
+                            <constraint firstItem="1EN-Dt-0rD" firstAttribute="leading" secondItem="tHG-12-nMJ" secondAttribute="leading" constant="30" id="uaR-xr-f86"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tHG-12-nMJ"/>
                     </view>
@@ -537,7 +551,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="7Gh-rj-3bl"/>
+        <segue reference="3E4-PS-kl2"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="email" width="100" height="100"/>

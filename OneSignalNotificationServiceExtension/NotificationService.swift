@@ -16,6 +16,8 @@ class NotificationService: UNNotificationServiceExtension {
             OneSignal.didReceiveNotificationExtensionRequest(self.receivedRequest, with: self.bestAttemptContent)
             contentHandler(bestAttemptContent)
         }
+        
+        
     }
     
     override func serviceExtensionTimeWillExpire() {
@@ -26,5 +28,8 @@ class NotificationService: UNNotificationServiceExtension {
             contentHandler(bestAttemptContent)
         }
     }
+    
+    
+
     
 }

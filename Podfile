@@ -13,6 +13,7 @@ target 'InstantProfits' do
   pod 'lottie-ios'
   pod 'Firebase/Messaging'
   pod 'GoogleSignIn'
+  pod 'OneSignal', '>= 2.11.2', '< 3.0'
 
 end
 
