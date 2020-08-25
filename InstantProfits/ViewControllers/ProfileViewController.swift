@@ -62,7 +62,7 @@ class ProfileViewController: UIViewController {
             let _remainingSignals  = data?["remainingSignals"] as? Int
             
            
-            self.remainingSignals.text = "   Remaining Signals: \(_remainingSignals!)"
+            self.remainingSignals.text = "Remaining Signals: \(_remainingSignals!)"
             self.email.text = (_email as? String)!
             self.firstName.text = (_firstName as? String)!
             self.surname.text = (_surname as? String)!
