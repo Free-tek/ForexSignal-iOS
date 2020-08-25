@@ -32,12 +32,17 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
 
         setUpElements()
+        
         hideKeyboardWhenTappedAround()
         getData()
         // Do any additional setup after loading the view.
     }
     
     func setUpElements(){
+        email.isEnabled = false
+        firstName.isEnabled = false
+        surname.isEnabled = false
+        
         Utilities.styleFilledButton2(updateProfile)
         Utilities.styleFilledButton(changePassword)
         Utilities.styleFilledButton3(logOut)
