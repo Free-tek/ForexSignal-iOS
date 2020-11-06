@@ -35,7 +35,6 @@ class SplashScreenViewController: UIViewController {
 
    func checkLogin(){
         let userID = Auth.auth().currentUser?.uid
-        //try! Auth.auth().signOut()
          
          
         if userID != nil && Auth.auth().currentUser?.isEmailVerified == true{

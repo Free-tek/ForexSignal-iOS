@@ -24,6 +24,8 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
     @IBOutlet weak var errorMessage: UILabel!
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var or: UILabel!
+    
+    @IBOutlet weak var loginView: UIView!
 
     let animationView = AnimationView()
 
@@ -45,6 +47,11 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
         Utilities.styleFilledButton(signUp)
         Utilities.styleFilledButton2(googleSignIn)
         errorMessage.alpha = 0
+        
+        loginView.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
+        loginView.layer.cornerRadius = 15
+        
+        googleSignIn.addShadowButton(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
 
     }
 
@@ -286,5 +293,37 @@ extension UIViewController {
 
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+}
+
+
+extension UIView {
+
+    func addShadow(offset: CGSize, color: UIColor, radius: CGFloat, opacity: Float) {
+        layer.masksToBounds = false
+        layer.shadowOffset = offset
+        layer.shadowColor = color.cgColor
+        layer.shadowRadius = radius
+        layer.shadowOpacity = opacity
+
+        let backgroundCGColor = backgroundColor?.cgColor
+        backgroundColor = nil
+        layer.backgroundColor = backgroundCGColor
+    }
+}
+
+
+extension UIButton{
+
+    func addShadowButton(offset: CGSize, color: UIColor, radius: CGFloat, opacity: Float) {
+        layer.masksToBounds = false
+        layer.shadowOffset = offset
+        layer.shadowColor = color.cgColor
+        layer.shadowRadius = radius
+        layer.shadowOpacity = opacity
+
+        let backgroundCGColor = backgroundColor?.cgColor
+        backgroundColor = nil
+        layer.backgroundColor = backgroundCGColor
     }
 }
