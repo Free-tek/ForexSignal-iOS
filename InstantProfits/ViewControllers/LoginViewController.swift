@@ -21,12 +21,10 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
     @IBOutlet weak var login: UIButton!
     @IBOutlet weak var signUp: UIButton!
     @IBOutlet weak var googleSignIn: UIButton!
-    @IBOutlet weak var errorMessage: UILabel!
-    @IBOutlet weak var logo: UIImageView!
-    @IBOutlet weak var or: UILabel!
     
     @IBOutlet weak var loginView: UIView!
-
+    @IBOutlet weak var headerView: UIView!
+    
     let animationView = AnimationView()
 
     override func viewDidLoad() {
@@ -44,14 +42,18 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
 
     func setUpElements() {
         Utilities.styleFilledButton(login)
-        Utilities.styleFilledButton(signUp)
-        Utilities.styleFilledButton2(googleSignIn)
-        errorMessage.alpha = 0
+        
+        email.borderStyle = .none
+        password.borderStyle = .none
+        
+        
+       
         
         loginView.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
         loginView.layer.cornerRadius = 15
         
         googleSignIn.addShadowButton(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
+        googleSignIn.layer.cornerRadius = 15
 
     }
 
@@ -76,16 +78,8 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
             self.view.addSubview(self.animationView)
 
             //switch views off
-
-            errorMessage.alpha = 0
-            email.alpha = 0.2
-            password.alpha = 0.2
-            forgotPassword.alpha = 0.2
-            login.alpha = 0.2
-            signUp.alpha = 0.2
-            googleSignIn.alpha = 0.2
-            logo.alpha = 0.2
-            or.alpha = 0.2
+            headerView.alpha = 0.2
+            loginView.alpha = 0.2
 
 
             let _email = email.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -115,15 +109,11 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
                         self?.animationView.alpha = 0
 
                         //switch views back on
-                        self?.errorMessage.alpha = 0
-                        self?.email.alpha = 1
-                        self?.password.alpha = 1
-                        self?.forgotPassword.alpha = 1
-                        self?.login.alpha = 1
-                        self?.signUp.alpha = 1
-                        self?.googleSignIn.alpha = 1
-                        self?.logo.alpha = 1
-                        self?.or.alpha = 1
+                        
+                        self?.headerView.alpha = 1
+                        self?.loginView.alpha = 1
+                        
+                        
                     } else {
                         self?.transitionToHome()
                     }
@@ -132,21 +122,14 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
                 } else {
                     // user sign in unsucessful
                     self?.showToast(message: error!.localizedDescription, seconds: 1.5)
-                    //self?.showErrorMessage(error!.localizedDescription)
+                    
                     print("Error during login")
                     self?.animationView.stop()
                     self?.animationView.alpha = 0
 
                     //switch views back on
-                    self?.errorMessage.alpha = 0
-                    self?.email.alpha = 1
-                    self?.password.alpha = 1
-                    self?.forgotPassword.alpha = 1
-                    self?.login.alpha = 1
-                    self?.signUp.alpha = 1
-                    self?.googleSignIn.alpha = 1
-                    self?.logo.alpha = 1
-                    self?.or.alpha = 1
+                    self?.headerView.alpha = 1
+                    self?.loginView.alpha = 1
 
 
 
@@ -158,7 +141,6 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
 
         } else {
             showToast(message: validateFields()!, seconds: 1.5)
-            //showErrorMessage(validateFields()!)
 
         }
 
@@ -278,10 +260,6 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
         return nil
     }
 
-    func showErrorMessage(_ message: String) {
-        errorMessage.text = "Error:  " + message
-        errorMessage.alpha = 1
-    }
 }
 //hide keyboard ontouch outside
 extension UIViewController {
