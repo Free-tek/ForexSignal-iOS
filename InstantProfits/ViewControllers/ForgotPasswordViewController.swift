@@ -17,10 +17,10 @@ class ForgotPasswordViewController: UIViewController {
 
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var send: UIButton!
-    @IBOutlet weak var errorMessage: UILabel!
     @IBOutlet weak var cancel: UIButton!
     @IBOutlet weak var header: UILabel!
     @IBOutlet weak var instruction: UILabel!
+    @IBOutlet weak var forgotPasswordView: UIView!
     
      let animationView = AnimationView()
     
@@ -33,8 +33,14 @@ class ForgotPasswordViewController: UIViewController {
     }
     
     func setUpElements(){
-        Utilities.styleFilledButton(send)
-        errorMessage.alpha = 0
+        
+        email.borderStyle = .none
+        
+        forgotPasswordView.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
+        forgotPasswordView.layer.cornerRadius = 15
+        
+        send.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
+        send.layer.cornerRadius = 15
             
     }
     
@@ -52,15 +58,10 @@ class ForgotPasswordViewController: UIViewController {
             self.view.addSubview(self.animationView)
             
             
-            cancel.alpha = 0.2
-            email.alpha = 0.2
-            send.alpha = 0.2
-            header.alpha = 0.2
-            instruction.alpha = 0.2
+            forgotPasswordView.alpha = 0.2
             
             
             let _email = email.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            //let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             Auth.auth().sendPasswordReset(withEmail: _email) { error in
                 
             }
@@ -70,11 +71,7 @@ class ForgotPasswordViewController: UIViewController {
             showToast(message: self.validateFields()!, seconds: 1)
         }
         
-        cancel.alpha = 1
-        email.alpha = 1
-        send.alpha = 1
-        header.alpha = 1
-        instruction.alpha = 1
+        forgotPasswordView.alpha = 1
         self.animationView.stop()
         self.animationView.alpha = 0
     }

@@ -20,11 +20,15 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var phoneNo: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var confirmPassword: UITextField!
-    @IBOutlet weak var CountryPicker: UIPickerView!
+    @IBOutlet weak var country: UITextField!
     @IBOutlet weak var signUp: UIButton!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var errorMessage: UILabel!
-    @IBOutlet weak var selectCountry: UILabel!
+    @IBOutlet weak var googleSignIn: UIButton!
+    
+    @IBOutlet weak var signUpScroll: UIScrollView!
+    private var countryPicker: UIPickerView?
+    let countries = Utilities.countries
+    
     
     let animationView = AnimationView()
         
@@ -36,34 +40,32 @@ class SignUpViewController: UIViewController {
     }
     
     func setUpElements(){
-        Utilities.styleFilledButton(signUp)
-        errorMessage.alpha = 0
         
-        self.dataSource = ["Afghanistan","Albania","Algeria","Angola","Argentina","Armenia","Australia","Austria","Azerbaijan","Bahamas","Bangladesh","Belarus","Belgium","Belize","Benin","Bhuta","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei Darussalam","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Ivory Coast","Central African Republic","Chad","Chile","China","Colombia","Congo","Democratic Republic of Congo","Costa Rica","Croatia","Cuba","Cyprus","Czech Republic","Denmark","Diamond Princess","Djibouti","Dominican Republic","DR Congo","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Falkland Islands","Fiji","Finland","France","French Guiana","French Southern Territories","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Greenland","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Korea","Kosovo","Kuwait","Kyrgyzstan","Lao","Latvia","Lebanon","Lesotho","Liberia","Libya","Lithuania","Luxembourg","Macedonia","Madagascar","Malawi","Malaysia","Mali","Mauritania","Mexico","Moldova","Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia","Nepal","Netherlands","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","North Korea","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Republic of Kosovo","Romania","Russia","Rwanda","Saudi Arabia","Senegal","Serbia","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Svalbard and Jan Mayen","Swaziland","Sweden","Switzerland","Syrian Arab Republic","Taiwan","Tajikistan","Tanzania","Thailand","Timor-Leste","Togo","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","UAE","Uganda","United Kingdom","Ukraine","USA","Uruguay","Uzbekistan","Vanuatu","Venezuela","Vietnam","Western Sahara","Yemen","Zambia","Zimbabwe"]
+        signUpScroll.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
+        signUpScroll.layer.cornerRadius = 15
         
+        googleSignIn.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
+        googleSignIn.layer.cornerRadius = 15
         
-        self.CountryPicker.reloadAllComponents()
-        self.CountryPicker.dataSource = self
-        self.CountryPicker.delegate = self
+        countryPicker = UIPickerView()
+        country.inputView = countryPicker
+        countryPicker!.delegate = self
+        
+        signUp.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
+        signUp.layer.cornerRadius = 15
+        
+
+        self.countryPicker!.delegate = self
+        self.countryPicker!.dataSource = self
         
     }
     
     @IBAction func signUpFunc(_ sender: Any) {
         if(validateFields() == nil){
 
-            email.alpha = 0.2
-            firstName.alpha = 0.2
-            surname.alpha = 0.2
-            phoneNo.alpha = 0.2
-            password.alpha = 0.2
-            confirmPassword.alpha = 0.2
-            CountryPicker.alpha = 0.2
-            signUp.alpha = 0.2
-            loginButton.alpha = 0.2
-            errorMessage.alpha = 0
-            selectCountry.alpha = 0.2
+            signUpScroll.alpha = 0.2
             
-            
+           
             self.animationView.alpha = 1
             self.animationView.animation = Animation.named("loading")
             self.animationView.frame = CGRect(x:0, y:0, width: 150, height: 150)
@@ -80,22 +82,12 @@ class SignUpViewController: UIViewController {
                 if err != nil{
                     //there was an error
                     self.showToast(message: "Please try again, we could not create your account", seconds: 1.5)
-                    //self.showErrorMessage("Please try again, we could not create your account")
+                    
                     
                     self.animationView.stop()
                     self.animationView.alpha = 0
                     
-                    self.email.alpha = 1
-                    self.firstName.alpha = 1
-                    self.surname.alpha = 1
-                    self.phoneNo.alpha = 1
-                    self.password.alpha = 1
-                    self.confirmPassword.alpha = 1
-                    self.CountryPicker.alpha = 1
-                    self.signUp.alpha = 1
-                    self.loginButton.alpha = 1
-                    self.errorMessage.alpha = 0
-                    self.selectCountry.alpha = 1
+                    self.signUpScroll.alpha = 1
                     
                     self.showToast(message: "Please try again, we could not create your account", seconds: 1)
                     self.animationView.stop()
@@ -113,7 +105,7 @@ class SignUpViewController: UIViewController {
                                                         "phoneNumber" : self.phoneNo.text!,
                                                         "password": self.password.text!,
                                                         "email": self.email.text!,
-                                                        "country": self.selectCountry.text!,
+                                                        "country": self.country.text!,
                                                         "city": "",
                                                         "isAdmin": 0,
                                                         "paid": 0,
@@ -149,17 +141,7 @@ class SignUpViewController: UIViewController {
                     self.animationView.stop()
                     self.animationView.alpha = 0
                     
-                    self.email.alpha = 1
-                    self.firstName.alpha = 1
-                    self.surname.alpha = 1
-                    self.phoneNo.alpha = 1
-                    self.password.alpha = 1
-                    self.confirmPassword.alpha = 1
-                    self.CountryPicker.alpha = 1
-                    self.signUp.alpha = 1
-                    self.loginButton.alpha = 1
-                    self.errorMessage.alpha = 0
-                    self.selectCountry.alpha = 1
+                    self.signUpScroll.alpha = 1
                     
                     self.showToast(message: "A verification email has been sent to you, please confirm your email.", seconds: 3)
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3){
@@ -170,7 +152,6 @@ class SignUpViewController: UIViewController {
             
         }else{
             showToast(message: validateFields()!, seconds: 1.5)
-            //showErrorMessage(validateFields()!)
         }
     }
    
@@ -194,21 +175,12 @@ class SignUpViewController: UIViewController {
         }else if password.text?.trimmingCharacters(in: .whitespacesAndNewlines) != confirmPassword.text?.trimmingCharacters(in: .whitespacesAndNewlines) {
             return "Your passwords dont match"
             
-        }else if selectCountry.text == "Select Country" {
+        }else if country.text == "Select Country" {
             return "Please select a country"
         }
         
         return nil
     }
-    
-    func showErrorMessage(_ message: String){
-        errorMessage.text = "Error:  " + message
-        errorMessage.alpha = 0
-        showToast(message: message, seconds: 3)
-    }
-    
-    
-    
     
 
 }
@@ -218,20 +190,19 @@ extension SignUpViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return dataSource.count
+        return countries.count
     }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectCountry.text = dataSource[row]
-    }
-    
+
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return dataSource[row ]
+        return countries[row]
     }
-    
-    
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        country.text = countries[row]
+    }
+
 }
 
 extension UIViewController {
