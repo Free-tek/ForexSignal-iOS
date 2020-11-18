@@ -27,26 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         //Remove this method to stop OneSignal Debugging
         OneSignal.setLogLevel(.LL_VERBOSE, visualLevel: .LL_NONE)
 
-        //reduce users signals once message is recieved
-        let notificationReceivedBlock: OSHandleNotificationReceivedBlock = { notification in
-            
-            if notification!.payload.title.lowercased().contains("premium") || notification!.payload.body.lowercased().contains("premium") {
-
-                let userID = Auth.auth().currentUser?.uid
-                let ref = Database.database().reference().child("users").child(userID!)
-                ref.observeSingleEvent(of: .value) {
-                    (snapshot) in
-                    let data = snapshot.value as? [String: Any]
-
-                    let _remainingSignals = data?["remainingSignals"] as? Int
-                    if(_remainingSignals! > 0) {
-                        ref.child("remainingSignals").setValue(_remainingSignals! - 1)
-                    }
-                }
-            }
-
-        }
-
 
         //START OneSignal initialization code
         let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false, kOSSettingsKeyInAppLaunchURL: false]

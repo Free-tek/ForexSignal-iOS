@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import OneSignal
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var premiumView: UIView!
@@ -33,7 +34,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
 
         setUpElements()
-        // Do any additional setup after loading the view.
+        
         // Do any additional setup after loading the view.
 
 
@@ -41,6 +42,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     }
 
+    
     func setUpElements() {
         //show that app user uses iOS
         let userID = Auth.auth().currentUser?.uid

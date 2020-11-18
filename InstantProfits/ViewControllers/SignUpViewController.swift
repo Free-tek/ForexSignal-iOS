@@ -9,8 +9,9 @@
 import UIKit
 import Firebase
 import Lottie
+import GoogleSignIn
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, GIDSignInDelegate {
     
     private var dataSource = [String]()
 
@@ -24,6 +25,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var signUp: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var googleSignIn: UIButton!
+    
+    @IBOutlet weak var signInView: UIView!
     
     @IBOutlet weak var signUpScroll: UIScrollView!
     private var countryPicker: UIPickerView?
@@ -41,8 +44,8 @@ class SignUpViewController: UIViewController {
     
     func setUpElements(){
         
-        signUpScroll.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
-        signUpScroll.layer.cornerRadius = 15
+        signInView.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
+        signInView.layer.cornerRadius = 15
         
         googleSignIn.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
         googleSignIn.layer.cornerRadius = 15
@@ -182,7 +185,107 @@ class SignUpViewController: UIViewController {
         return nil
     }
     
+    @IBAction func signUpGoogleFunc(_ sender: Any) {
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        guard let auth = user.authentication else {
+            return
 
+        }
+        let credentials = GoogleAuthProvider.credential(withIDToken: auth.idToken, accessToken: auth.accessToken)
+        Auth.auth().signIn(with: credentials) { (authResult, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                self.showToast(message: "Ooops... This email already exists", seconds: 1.5)
+            } else {
+                print("Login Successful.")
+                //get users detail and save it to firebase
+                let user: GIDGoogleUser = GIDSignIn.sharedInstance()!.currentUser
+                let surname = user.profile.familyName
+                let name = user.profile.givenName
+                let email = user.profile.email
+
+
+                let userId = Auth.auth().currentUser?.uid
+                let ref = Database.database().reference().child("users")
+
+
+                ref.observeSingleEvent(of: .value, with: { (snapshot) in
+
+                    if snapshot.hasChild(userId!) {
+                        print("user already exists \(userId!)")
+                        self.transitionToHome()
+
+                    } else {
+
+                        let post: [String: Any] = [
+                            "name": name ?? "",
+                            "surname": surname ?? "",
+                            "phoneNumber": "",
+                            "password": "Google Sign In",
+                            "email": email ?? "",
+                            "country": "",
+                            "city": "",
+                            "isAdmin": 0,
+                            "paid": 0,
+                            "remainingSignals": 0,
+                            "verified": "true",
+                            "signalsLeft": 0,
+                            "version": "iOS V1"
+                        ]
+
+
+                        let ref = Database.database().reference().child("users").child(userId!)
+
+                        //save user's data
+                        ref.setValue(post) { (err, resp) in
+                            if err == nil {
+                                self.transitionToHome()
+                            } else {
+                                self.showToast(message: "Ooops... This email already exists", seconds: 1.5)
+                                print("Posting failed : ")
+                                return
+                            }
+                            print("No errors while posting, :")
+                            print(resp)
+
+
+
+
+                        }
+                    }
+
+
+                })
+                
+
+            }
+
+        }
+    }
+
+    
+    func transitionToHome() {
+        // Stop and hide indicator
+        self.animationView.stop()
+        self.animationView.alpha = 0
+
+        let storyboard = UIStoryboard(name: "Home", bundle: Bundle.main)
+        let viewController = storyboard.instantiateInitialViewController()
+
+        if let viewController = viewController {
+            view.window?.rootViewController = viewController
+            view.window?.makeKeyAndVisible()
+        }
+    }
+    
+    
 }
 
 extension SignUpViewController: UIPickerViewDelegate, UIPickerViewDataSource{
