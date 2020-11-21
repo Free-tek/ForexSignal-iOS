@@ -1227,6 +1227,9 @@
                                                         <state key="normal" title="Forgot Password ?">
                                                             <color key="titleColor" red="0.87450980389999999" green="0.0039215686269999999" blue="0.047058823530000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="changePasswordFunc:" destination="01N-Ik-p67" eventType="touchUpInside" id="yPf-V0-XdV"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1277,6 +1280,9 @@
                                                     <constraint firstAttribute="width" constant="35" id="JFR-P5-e4O"/>
                                                 </constraints>
                                                 <state key="normal" image="icons8-exit_sign"/>
+                                                <connections>
+                                                    <action selector="logoutFunc:" destination="01N-Ik-p67" eventType="touchUpInside" id="edS-Jh-fUZ"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

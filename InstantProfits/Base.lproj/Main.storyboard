@@ -1083,6 +1083,7 @@
                                 <color key="tintColor" red="0.20424863509999999" green="0.20424863509999999" blue="0.20424863509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" backgroundImage="icons8-back"/>
                                 <connections>
+                                    <action selector="backFunction:" destination="2t5-aD-JlV" eventType="touchUpInside" id="CmV-MS-uBv"/>
                                     <segue destination="LdU-PF-IRs" kind="presentation" id="hqc-ej-pZf"/>
                                 </connections>
                             </button>
@@ -1117,7 +1118,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="o8K-yp-H2Z"/>
+        <segue reference="hqc-ej-pZf"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="background" width="375" height="812"/>

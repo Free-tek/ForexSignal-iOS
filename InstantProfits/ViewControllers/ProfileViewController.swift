@@ -121,6 +121,8 @@ class ProfileViewController: UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "forgotPasswordPage") as! ForgotPasswordViewController
         viewController.view.window?.rootViewController = viewController
         viewController.view.window?.makeKeyAndVisible()
+        self.parent!.present(viewController, animated:
+                        false, completion: nil)
         
     }
     

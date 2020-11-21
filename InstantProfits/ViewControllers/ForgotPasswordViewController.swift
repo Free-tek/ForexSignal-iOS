@@ -78,15 +78,19 @@ class ForgotPasswordViewController: UIViewController {
     
     
     func validateFields() -> String?{
-           //check that all fields are filled in
-           if self.email.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
-           {
-               return "Please enter your email."
-           }
-           
-           return nil
+       //check that all fields are filled in
+       if self.email.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
+       {
+           return "Please enter your email."
        }
        
+       return nil
+   }
+       
+    @IBAction func backFunction(_ sender: Any) {
+        
+        dismiss(animated: false, completion: nil)
+    }
     
     
 }
