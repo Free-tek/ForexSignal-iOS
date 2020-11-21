@@ -11,12 +11,14 @@ class PlansItemModel{
     var planDescription: String?
     var planName: String?
     var planPrice: String?
+    var planProductId: String?
     var planKey: String?
     
-    init(planDescription: String?, planName: String?, planPrice: String?, planKey: String?){
+    init(planDescription: String?, planName: String?, planPrice: String?, planProductId: String?, planKey: String?){
         self.planDescription = planDescription
         self.planName = planName
         self.planPrice = planPrice
+        self.planProductId = planProductId
         self.planKey = planKey
     }
 }

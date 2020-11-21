@@ -17,10 +17,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var addSignalButton: UIButton!
     @IBOutlet weak var newSignal: UIButton!
     @IBOutlet weak var oldSignal: UIButton!
-
+    @IBOutlet weak var sortSignalsView: UIView!
+    
+    @IBOutlet weak var signalsViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var homeHeader: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var cancel: UIButton!
-
+    
+    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
+    
+    
     var refList: DatabaseReference!
     var ref = Database.database().reference()
     var itemList = [SignalsItemModel]()
@@ -49,13 +55,28 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let refUser = Database.database().reference().child("users").child(userID!)
         refUser.child("version").setValue("iOS V1")
 
-
-        Utilities.styleFilledButtonBlack(newSignal)
-        Utilities.styleFilledButtonHollowEdge(oldSignal)
-
+        
+        premiumView.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
+        premiumView.layer.cornerRadius = 15
+        
+        let insetsTrack = UIEdgeInsets(top: 100, left: 0, bottom: 200, right: 0)
+        tableView.contentInset = insetsTrack
+    
+        addSignalButton.addShadowButton(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
+        addSignalButton.layer.cornerRadius = 15
+        
+        
+        newSignal.addShadowButton(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
+        newSignal.layer.cornerRadius = 15
+        
+        oldSignal.addShadowButton(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
+        oldSignal.layer.cornerRadius = 15
+        
 
         tableView.alpha = 0
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 130, right: 0);
+        
+        
         //----set up activity indicator-----
         activityIndicator.center = self.view.center;
         activityIndicator.hidesWhenStopped = true;
@@ -104,11 +125,20 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                             let itemTradeOutcome = itemObject?["trade_outcome"]
                             let itemTradePrice = itemObject?["trade_price"]
                             let itemTradeProfit = itemObject?["trade_profit"]
-                            //let itemKey = item.key
+                            
+                            
+                            
+                            let dateFormatterGet = DateFormatter()
+                                    dateFormatterGet.dateFormat = "dd-MM-yyyy HH:mm:ss"
 
+                            let dateFormatterPrint = DateFormatter()
+                            dateFormatterPrint.dateFormat = "dd-MM-yy HH:mm"
 
+                            let date: Date? = dateFormatterGet.date(from: (itemSignalTime as! String?)!)
+                            let _itemSignalTime = dateFormatterPrint.string(from: date!)
+                            
                             //creating itemGotten object with model and fetched values
-                            let itemGotten = SignalsItemModel(itemCurrency: itemCurrency as! String?, itemDecision: itemDecision as! String?, itemImage: itemImage, itemSignalTime: itemSignalTime as! String?, itemStopLoss: itemStopLoss as! String?, itemTimeStamp: itemTimeStamp as! Int?, itemTradeOutcome: itemTradeOutcome as! String?, itemTradePrice: itemTradePrice as! String?, itemTradeProfit: itemTradeProfit as! String?)
+                            let itemGotten = SignalsItemModel(itemCurrency: itemCurrency as! String?, itemDecision: itemDecision as! String?, itemImage: itemImage, itemSignalTime: _itemSignalTime, itemStopLoss: itemStopLoss as! String?, itemTimeStamp: itemTimeStamp as! Int?, itemTradeOutcome: itemTradeOutcome as! String?, itemTradePrice: itemTradePrice as! String?, itemTradeProfit: itemTradeProfit as! String?)
 
                             //appending it to list
                             self.itemList.append(itemGotten)
@@ -130,9 +160,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
             } else {
                 self.premiumView.isHidden = true
+                self.homeHeader.isHidden = true
+                
+                self.sortSignalsView.backgroundColor = UIColor(patternImage: UIImage(named: "homeHeader.png")!)
 
                 let xPosition = self.signalsView.frame.origin.x
-                let yPosition = self.signalsView.frame.origin.y - 130 // Slide Up - 20px
+                let yPosition = self.signalsView.frame.origin.y - 140 // Slide Up - 20px
 
                 let width = self.signalsView.frame.size.width
                 let height = self.signalsView.frame.size.height
@@ -164,11 +197,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                             let itemTradeOutcome = itemObject?["trade_outcome"]
                             let itemTradePrice = itemObject?["trade_price"]
                             let itemTradeProfit = itemObject?["trade_profit"]
-                            //let itemKey = item.key
+                            
+                            let dateFormatterGet = DateFormatter()
+                                    dateFormatterGet.dateFormat = "dd-MM-yyyy HH:mm:ss"
 
+                            let dateFormatterPrint = DateFormatter()
+                            dateFormatterPrint.dateFormat = "dd-MM-yy HH:mm"
 
+                            let date: Date? = dateFormatterGet.date(from: (itemSignalTime as! String?)!)
+                            let _itemSignalTime = dateFormatterPrint.string(from: date!)
+                           
                             //creating itemGotten object with model and fetched values
-                            let itemGotten = SignalsItemModel(itemCurrency: itemCurrency as! String?, itemDecision: itemDecision as! String?, itemImage: itemImage, itemSignalTime: itemSignalTime as! String?, itemStopLoss: itemStopLoss as! String?, itemTimeStamp: itemTimeStamp as! Int?, itemTradeOutcome: itemTradeOutcome as! String?, itemTradePrice: itemTradePrice as! String?, itemTradeProfit: itemTradeProfit as! String?)
+                            let itemGotten = SignalsItemModel(itemCurrency: itemCurrency as! String?, itemDecision: itemDecision as! String?, itemImage: itemImage, itemSignalTime: _itemSignalTime, itemStopLoss: itemStopLoss as! String?, itemTimeStamp: itemTimeStamp as! Int?, itemTradeOutcome: itemTradeOutcome as! String?, itemTradePrice: itemTradePrice as! String?, itemTradeProfit: itemTradeProfit as! String?)
 
                             //appending it to list
                             self.itemList.append(itemGotten)
@@ -239,13 +279,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let rounded = round((tradeProfit! - tradePrice!) * multiplier) / multiplier
 
         cell.takeProfitPercentage.text = String(rounded)
-        cell.tradeOutcome.text = item.itemTradeOutcome
+        cell.selectionStyle = .none
+        
+    
 
+        
         return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 160
+        return 180
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -257,6 +300,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBAction func newSignalFunc(_ sender: Any) {
         sort = true
+        _oldSignal = false
         setUpElements()
     }
 
@@ -269,18 +313,38 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func cancelFunc(_ sender: Any) {
 
         premiumView.isHidden = true
+        homeHeader.isHidden = true
+        
+        sortSignalsView.backgroundColor = UIColor(patternImage: UIImage(named: "homeHeader.png")!)
 
         let xPosition = signalsView.frame.origin.x
-        let yPosition = signalsView.frame.origin.y - 150 // Slide Up - 20px
+        let yPosition = signalsView.frame.origin.y - premiumView.frame.size.height - 40 // Slide Up - 20px
 
         let width = signalsView.frame.size.width
         let height = signalsView.frame.size.height
-
+        
+        
+        let tableViewWidth = tableView.frame.size.width
+        let tableViewHeight = tableView.frame.size.height
+            
+            
+        
         UIView.animate(withDuration: 1.0, animations: {
             self.signalsView.frame = CGRect(x: xPosition, y: yPosition, width: width, height: height)
+        
         })
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+            
+            self.signalsView.frame = CGRect(x: xPosition, y: yPosition, width: width, height: height + 160)
+            self.tableView.frame  = CGRect(x: xPosition, y: yPosition, width: width, height: height + 160)
+            
+            
+          
+            })
+        
+        
 
     }
-
 
 }

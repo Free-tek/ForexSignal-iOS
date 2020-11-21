@@ -23,6 +23,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var contactUs: UIButton!
     @IBOutlet weak var changePassword: UIButton!
     @IBOutlet weak var logOut: UIButton!
+    @IBOutlet weak var menuView: UIView!
+    @IBOutlet weak var editProfile: UIButton!
     
     var refList: DatabaseReference!
     var ref = Database.database().reference()
@@ -39,14 +41,35 @@ class ProfileViewController: UIViewController {
     }
     
     func setUpElements(){
+        
+        
+        menuView.layer.cornerRadius = 10
+        menuView.layer.shadowColor = UIColor.black.cgColor
+        menuView.layer.shadowOpacity = 1
+        menuView.layer.shadowOffset = .zero
+        menuView.layer.shadowRadius  = 5
+        menuView.layer.cornerRadius = 10
+        
+        editProfile.layer.cornerRadius = 10
+        editProfile.layer.shadowColor = UIColor.black.cgColor
+        editProfile.layer.shadowOpacity = 1
+        editProfile.layer.shadowOffset = .zero
+        editProfile.layer.shadowRadius = 5
+        editProfile.layer.cornerRadius = 10
+        
+        contactUs.layer.cornerRadius = 10
+        contactUs.layer.shadowColor = UIColor.black.cgColor
+        contactUs.layer.shadowOpacity = 1
+        contactUs.layer.shadowOffset = .zero
+        contactUs.layer.shadowRadius = 5
+        contactUs.layer.cornerRadius = 10
+        
+        
         email.isEnabled = false
         firstName.isEnabled = false
         surname.isEnabled = false
         
-        Utilities.styleFilledButton2(updateProfile)
-        Utilities.styleFilledButton(changePassword)
-        Utilities.styleFilledButton3(logOut)
-        Utilities.styleFilledLabel2(remainingSignals)
+        updateProfile.layer.cornerRadius = 10
     }
     
     func getData(){
@@ -67,7 +90,7 @@ class ProfileViewController: UIViewController {
             let _remainingSignals  = data?["remainingSignals"] as? Int
             
            
-            self.remainingSignals.text = "Remaining Signals: \(_remainingSignals!)"
+            self.remainingSignals.text = "Signals Left: \(_remainingSignals!)"
             self.email.text = (_email as? String)!
             self.firstName.text = (_firstName as? String)!
             self.surname.text = (_surname as? String)!

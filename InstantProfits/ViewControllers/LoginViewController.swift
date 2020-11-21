@@ -78,7 +78,6 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
             self.view.addSubview(self.animationView)
 
             //switch views off
-            headerView.alpha = 0.2
             loginView.alpha = 0.2
 
 
@@ -110,7 +109,6 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
 
                         //switch views back on
                         
-                        self?.headerView.alpha = 1
                         self?.loginView.alpha = 1
                         
                         
@@ -128,7 +126,6 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
                     self?.animationView.alpha = 0
 
                     //switch views back on
-                    self?.headerView.alpha = 1
                     self?.loginView.alpha = 1
 
 

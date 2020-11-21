@@ -13,10 +13,10 @@ class PlanTableViewCell: UITableViewCell {
     @IBOutlet weak var planName: UILabel!
     @IBOutlet weak var planDescription: UILabel!
     @IBOutlet weak var planPrice: UILabel!
+    @IBOutlet weak var priceView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        Utilities.styleHollowLabel(planPrice)
         // Initialization code
     }
 
@@ -25,5 +25,22 @@ class PlanTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let margins = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
+        contentView.frame = contentView.frame.inset(by: margins)
+        
+        backgroundColor = .clear
+        layer.masksToBounds = false
+        layer.shadowOpacity = 1
+        layer.shadowRadius = 3
+        layer.shadowOffset = CGSize(width: 0, height: 0)
+        layer.shadowColor = UIColor.black.cgColor
+
+        contentView.backgroundColor = .white
+        contentView.layer.cornerRadius = 8
+    }
+    
 
 }

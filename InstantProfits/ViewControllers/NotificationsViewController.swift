@@ -121,6 +121,7 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
          }
          
         
+        
          return cell
     }
     

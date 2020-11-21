@@ -44,6 +44,14 @@ class SignUpViewController: UIViewController, GIDSignInDelegate {
     
     func setUpElements(){
         
+        email.borderStyle = .none
+        firstName.borderStyle = .none
+        surname.borderStyle = .none
+        phoneNo.borderStyle = .none
+        password.borderStyle = .none
+        confirmPassword.borderStyle = .none
+        country.borderStyle = .none
+        
         signInView.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
         signInView.layer.cornerRadius = 15
         
@@ -146,8 +154,8 @@ class SignUpViewController: UIViewController, GIDSignInDelegate {
                     
                     self.signUpScroll.alpha = 1
                     
-                    self.showToast(message: "A verification email has been sent to you, please confirm your email.", seconds: 3)
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3){
+                    self.showToast(message: "A verification email has been sent to you, please confirm your email.", seconds: 2)
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2){
                         self.performSegue(withIdentifier: "launchLogin", sender: nil)
                     }
                 }
