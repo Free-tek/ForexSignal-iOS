@@ -47,21 +47,21 @@ class ProfileViewController: UIViewController {
         menuView.layer.shadowColor = UIColor.black.cgColor
         menuView.layer.shadowOpacity = 1
         menuView.layer.shadowOffset = .zero
-        menuView.layer.shadowRadius  = 5
+        menuView.layer.shadowRadius  = 3
         menuView.layer.cornerRadius = 10
         
         editProfile.layer.cornerRadius = 10
         editProfile.layer.shadowColor = UIColor.black.cgColor
         editProfile.layer.shadowOpacity = 1
         editProfile.layer.shadowOffset = .zero
-        editProfile.layer.shadowRadius = 5
+        editProfile.layer.shadowRadius = 3
         editProfile.layer.cornerRadius = 10
         
         contactUs.layer.cornerRadius = 10
         contactUs.layer.shadowColor = UIColor.black.cgColor
         contactUs.layer.shadowOpacity = 1
         contactUs.layer.shadowOffset = .zero
-        contactUs.layer.shadowRadius = 5
+        contactUs.layer.shadowRadius = 3
         contactUs.layer.cornerRadius = 10
         
         

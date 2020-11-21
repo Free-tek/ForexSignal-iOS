@@ -194,7 +194,7 @@
                             <constraint firstItem="Kxl-w3-gh7" firstAttribute="leading" secondItem="C5e-2V-6Cx" secondAttribute="leading" id="sUa-Oa-lNo"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="premium" selectedImage="premium-" id="nky-Ar-5ZM"/>
+                    <tabBarItem key="tabBarItem" title="" image="premium" id="nky-Ar-5ZM"/>
                     <navigationItem key="navigationItem" id="x2P-Me-s9s"/>
                     <connections>
                         <outlet property="signalsLeft" destination="91C-xg-5hz" id="9RB-uJ-m7B"/>
@@ -769,7 +769,7 @@
                             <constraint firstItem="Ntr-N1-k3e" firstAttribute="leading" secondItem="C4C-4A-lMA" secondAttribute="leading" id="vOM-qr-bxz"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="home" selectedImage="home-" id="FY0-Kb-GqS"/>
+                    <tabBarItem key="tabBarItem" title="" image="home" id="FY0-Kb-GqS"/>
                     <connections>
                         <outlet property="addSignalButton" destination="gWL-hO-NgM" id="enB-cC-NBi"/>
                         <outlet property="cancel" destination="Qb2-f3-05P" id="4jZ-uX-isj"/>
@@ -797,7 +797,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" red="0.98415709360000003" green="0.6452393354" blue="0.20542489420000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.92156862750000001" green="0.58748562510000002" blue="0.037330841720000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.92156862750000001" green="0.58748562510000002" blue="0.037330841720000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="sLY-6O-IZ1" kind="relationship" relationship="viewControllers" id="2pH-aH-BQo"/>
@@ -947,7 +952,7 @@
                             <constraint firstItem="f34-KO-T0d" firstAttribute="top" secondItem="cmh-3X-MdE" secondAttribute="top" id="s58-XP-Zz9"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="notifications" selectedImage="notifications-" id="h7F-nK-SXA"/>
+                    <tabBarItem key="tabBarItem" title="" image="notifications" id="h7F-nK-SXA"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="WWz-cL-TFS" id="jAf-12-I2S"/>
@@ -1413,7 +1418,7 @@
                             <constraint firstItem="yp0-lB-6OH" firstAttribute="leading" secondItem="Rai-Ug-XRe" secondAttribute="leading" id="pDp-Yj-iqQ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="account" selectedImage="account-" id="7HI-nK-a9U"/>
+                    <tabBarItem key="tabBarItem" title="" image="account" id="7HI-nK-a9U"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="414" height="1000"/>
                     <connections>
@@ -1437,8 +1442,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="account" width="33.333332061767578" height="33.333332061767578"/>
-        <image name="account-" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="account" width="25" height="25"/>
         <image name="alerts" width="50" height="50"/>
         <image name="back-white" width="50" height="50"/>
         <image name="buy" width="33.333332061767578" height="33.333332061767578"/>
@@ -1447,19 +1451,17 @@
         <image name="contact" width="96" height="96"/>
         <image name="editProfile" width="25.5" height="25"/>
         <image name="email-1" width="100" height="100"/>
-        <image name="home" width="33.333332061767578" height="33.333332061767578"/>
-        <image name="home-" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="home" width="25" height="25"/>
         <image name="homeHeader" width="375" height="99"/>
         <image name="icons8-bulleted_list" width="96" height="96"/>
         <image name="icons8-call_male" width="25" height="25"/>
         <image name="icons8-cancel-1" width="100" height="100"/>
         <image name="icons8-exit_sign" width="50" height="50"/>
         <image name="icons8-undo" width="34.666667938232422" height="34.666667938232422"/>
-        <image name="notifications" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="notifications" width="25" height="25"/>
         <image name="notifications-" width="33.333332061767578" height="33.333332061767578"/>
         <image name="phone-1" width="100" height="100"/>
-        <image name="premium" width="33.333332061767578" height="33.333332061767578"/>
-        <image name="premium-" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="premium" width="25" height="25"/>
         <image name="profile" width="50" height="50"/>
         <image name="signalnotification" width="16.666666030883789" height="16.666666030883789"/>
         <systemColor name="labelColor">
