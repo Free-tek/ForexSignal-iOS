@@ -23,6 +23,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var homeHeader: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var cancel: UIButton!
+    @IBOutlet weak var signalsViewVerticalConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     
@@ -165,15 +166,29 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.sortSignalsView.backgroundColor = UIColor(patternImage: UIImage(named: "homeHeader.png")!)
 
                 let xPosition = self.signalsView.frame.origin.x
-                let yPosition = self.signalsView.frame.origin.y - 140 // Slide Up - 20px
+                let yPosition = self.signalsView.frame.origin.y - 160 // Slide Up - 20px
 
                 let width = self.signalsView.frame.size.width
-                let height = self.signalsView.frame.size.height
-
+                //let height = self.signalsView.frame.size.height
+                
+                let height = CGFloat(1194)
+                
                 UIView.animate(withDuration: 1.0, animations: {
                     self.signalsView.frame = CGRect(x: xPosition, y: yPosition, width: width, height: height)
                 })
 
+                self.signalsViewHeightConstraint.constant = height
+                self.tableViewHeightConstraint.constant = height - 100
+                
+                if height > 896 {
+                    self.signalsViewVerticalConstraint.constant = -1 * (self.homeHeader.frame.height - 50)
+                }else{
+                    self.signalsViewVerticalConstraint.constant = -1 * (self.homeHeader.frame.height - 50)
+                }
+                
+                self.signalsView.layoutIfNeeded()
+                self.tableView.layoutIfNeeded()
+                
                 self.refList = Database.database().reference().child("premiumsignals");
 
                 //fetch all signals
@@ -233,6 +248,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     }
 
+    @IBAction func toPurchasePremiumSignals(_ sender: Any) {
+        
+        self.tabBarController?.selectedIndex = 1
+        
+    }
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemList.count
     }

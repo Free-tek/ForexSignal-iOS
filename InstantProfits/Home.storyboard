@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xM2-l8-VK2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xM2-l8-VK2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,7 +24,7 @@
         <!--Premium Plan View Controller-->
         <scene sceneID="Ngk-N7-JqK">
             <objects>
-                <viewController definesPresentationContext="YES" modalPresentationStyle="fullScreen" id="yQv-jN-2HV" customClass="PremiumPlanViewController" customModule="InstantProfits" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PremiumPlanViewController" definesPresentationContext="YES" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yQv-jN-2HV" customClass="PremiumPlanViewController" customModule="InstantProfits" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wBN-dL-HSN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -204,7 +204,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="haL-ve-heW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="595.6521739130435" y="283.25892857142856"/>
+            <point key="canvasLocation" x="593" y="353"/>
         </scene>
         <!--Payment-->
         <scene sceneID="274-F5-jB6">
@@ -300,7 +300,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDY-R5-CqE">
-                                        <rect key="frame" x="170.5" y="52" width="73.5" height="29"/>
+                                        <rect key="frame" x="173.5" y="52" width="67.5" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="29" id="l39-MD-Jga"/>
                                         </constraints>
@@ -375,15 +375,15 @@
         <!--Home View Controller-->
         <scene sceneID="77a-du-MhA">
             <objects>
-                <viewController id="sLY-6O-IZ1" customClass="HomeViewController" customModule="InstantProfits" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="sLY-6O-IZ1" customClass="HomeViewController" customModule="InstantProfits" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7xI-Ue-sA5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeHeader" translatesAutoresizingMaskIntoConstraints="NO" id="Ntr-N1-k3e">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="258"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="214"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="258" id="TW6-cK-kyn"/>
+                                    <constraint firstAttribute="height" constant="214" id="TW6-cK-kyn"/>
                                     <constraint firstAttribute="width" constant="414" id="XK4-ZV-0uR"/>
                                 </constraints>
                             </imageView>
@@ -411,6 +411,9 @@
                                         <state key="normal" title="Add Premium Signals">
                                             <color key="titleColor" red="0.96184961930000001" green="0.96184961930000001" blue="0.96184961930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="toPurchasePremiumSignals:" destination="sLY-6O-IZ1" eventType="touchUpInside" id="rZG-0k-gen"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qb2-f3-05P">
                                         <rect key="frame" x="335" y="4" width="32" height="32"/>
@@ -492,7 +495,7 @@
                                         <rect key="frame" x="20" y="95" width="374" height="525"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="250" constant="525" id="AyR-Jt-RuG"/>
+                                            <constraint firstAttribute="height" constant="525" id="AyR-Jt-RuG"/>
                                             <constraint firstAttribute="width" constant="374" id="X31-9L-iU3"/>
                                         </constraints>
                                         <prototypes>
@@ -747,9 +750,8 @@
                                     <constraint firstItem="a8Y-WC-Ga7" firstAttribute="top" secondItem="orQ-75-Kza" secondAttribute="top" constant="8" id="DsV-56-B86"/>
                                     <constraint firstAttribute="trailing" secondItem="QXy-tp-WJ8" secondAttribute="trailing" constant="20" symbolic="YES" id="IpM-WI-oBA"/>
                                     <constraint firstItem="a8Y-WC-Ga7" firstAttribute="leading" secondItem="orQ-75-Kza" secondAttribute="leading" id="K19-ex-Auo"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="250" constant="620" id="XGW-v7-Wlk"/>
+                                    <constraint firstAttribute="height" constant="620" id="XGW-v7-Wlk"/>
                                     <constraint firstItem="QXy-tp-WJ8" firstAttribute="top" secondItem="a8Y-WC-Ga7" secondAttribute="bottom" constant="31" id="d92-Mp-iVG"/>
-                                    <constraint firstAttribute="bottom" secondItem="QXy-tp-WJ8" secondAttribute="bottom" id="oIh-gx-AeI"/>
                                     <constraint firstAttribute="trailing" secondItem="a8Y-WC-Ga7" secondAttribute="trailing" id="xcc-0h-SFC"/>
                                 </constraints>
                             </view>
@@ -758,13 +760,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="orQ-75-Kza" firstAttribute="trailing" secondItem="C4C-4A-lMA" secondAttribute="trailing" id="1JJ-0T-wWP"/>
+                            <constraint firstItem="orQ-75-Kza" firstAttribute="top" secondItem="Puv-n2-gSd" secondAttribute="bottom" constant="4" id="7NA-1a-3ho"/>
                             <constraint firstItem="orQ-75-Kza" firstAttribute="top" secondItem="Puv-n2-gSd" secondAttribute="bottom" constant="4" id="Hkd-uV-9eu"/>
                             <constraint firstItem="C4C-4A-lMA" firstAttribute="trailing" secondItem="Puv-n2-gSd" secondAttribute="trailing" constant="20" id="KeO-tB-vho"/>
+                            <constraint firstItem="Ntr-N1-k3e" firstAttribute="top" secondItem="C4C-4A-lMA" secondAttribute="top" id="LTs-rt-Ghd"/>
                             <constraint firstItem="Puv-n2-gSd" firstAttribute="leading" secondItem="C4C-4A-lMA" secondAttribute="leading" constant="20" id="POr-Oe-sG2"/>
                             <constraint firstItem="orQ-75-Kza" firstAttribute="leading" secondItem="C4C-4A-lMA" secondAttribute="leading" id="SVe-dL-F72"/>
-                            <constraint firstItem="orQ-75-Kza" firstAttribute="bottom" secondItem="C4C-4A-lMA" secondAttribute="bottom" id="XeY-Z3-Pun"/>
                             <constraint firstItem="Puv-n2-gSd" firstAttribute="top" secondItem="C4C-4A-lMA" secondAttribute="top" constant="17" id="pWM-EC-rOA"/>
-                            <constraint firstItem="Ntr-N1-k3e" firstAttribute="top" secondItem="7xI-Ue-sA5" secondAttribute="top" id="ruC-md-h1Y"/>
                             <constraint firstItem="Ntr-N1-k3e" firstAttribute="trailing" secondItem="C4C-4A-lMA" secondAttribute="trailing" id="tn7-ad-eNh"/>
                             <constraint firstItem="Ntr-N1-k3e" firstAttribute="leading" secondItem="C4C-4A-lMA" secondAttribute="leading" id="vOM-qr-bxz"/>
                         </constraints>
@@ -779,6 +781,7 @@
                         <outlet property="premiumView" destination="Puv-n2-gSd" id="dg2-oe-fwc"/>
                         <outlet property="signalsView" destination="orQ-75-Kza" id="MET-kx-aHn"/>
                         <outlet property="signalsViewHeightConstraint" destination="XGW-v7-Wlk" id="xl6-eL-6ly"/>
+                        <outlet property="signalsViewVerticalConstraint" destination="DsV-56-B86" id="F4e-Pn-oA6"/>
                         <outlet property="sortSignalsView" destination="a8Y-WC-Ga7" id="DVX-su-dTf"/>
                         <outlet property="tableView" destination="QXy-tp-WJ8" id="7RD-ph-ay3"/>
                         <outlet property="tableViewHeightConstraint" destination="AyR-Jt-RuG" id="aOg-9R-dHL"/>
@@ -818,7 +821,7 @@
         <!--Notifications View Controller-->
         <scene sceneID="fuQ-zJ-sXK">
             <objects>
-                <viewController id="yiV-Xw-7UH" customClass="NotificationsViewController" customModule="InstantProfits" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="yiV-Xw-7UH" customClass="NotificationsViewController" customModule="InstantProfits" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cmh-3X-MdE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -960,12 +963,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H7T-zj-p0H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="595.6521739130435" y="991.74107142857133"/>
+            <point key="canvasLocation" x="596" y="1051"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="xmX-js-p1x">
             <objects>
-                <viewController id="01N-Ik-p67" customClass="ProfileViewController" customModule="InstantProfits" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="01N-Ik-p67" customClass="ProfileViewController" customModule="InstantProfits" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jgi-6A-oyk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1465,7 +1468,7 @@
         <image name="icons8-exit_sign" width="50" height="50"/>
         <image name="icons8-undo" width="34.666667938232422" height="34.666667938232422"/>
         <image name="notifications" width="25" height="25"/>
-        <image name="notifications-" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="notifications-" width="25" height="25"/>
         <image name="phone-1" width="100" height="100"/>
         <image name="premium" width="25" height="25"/>
         <image name="profile" width="50" height="50"/>

@@ -45,7 +45,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
         //END OneSignal initializataion code
 
-
+        
+        //UI Testing
+//        if let rootWindow = window {
+//            let screenSize = DeviceType.iPadPro11.getSize()
+//            Projector.display(rootWindow: rootWindow, testingSize: screenSize)
+//        }
 
 
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		35D06A957E24BCC7130B4591 /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F3B9978EA092C3150CA2F55 /* Pods_OneSignalNotificationServiceExtension.framework */; };
+		4305F27B257055BC00118AF2 /* Projector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4305F27A257055BC00118AF2 /* Projector.swift */; };
 		4317E304255594FB00F26954 /* Inter-Regular-slnt=0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4317E2FB255594F900F26954 /* Inter-Regular-slnt=0.ttf */; };
 		4317E305255594FB00F26954 /* Inter-Bold-slnt=0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4317E2FC255594F900F26954 /* Inter-Bold-slnt=0.ttf */; };
 		4317E306255594FB00F26954 /* Inter-Black-slnt=0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4317E2FD255594FA00F26954 /* Inter-Black-slnt=0.ttf */; };
@@ -78,6 +79,7 @@
 		0F3B9978EA092C3150CA2F55 /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		186A8D2076D526D206D6BAF5 /* Pods-InstantProfits.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstantProfits.release.xcconfig"; path = "Target Support Files/Pods-InstantProfits/Pods-InstantProfits.release.xcconfig"; sourceTree = "<group>"; };
 		26CF65FF16366AC28C00F344 /* Pods_InstantProfits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstantProfits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4305F27A257055BC00118AF2 /* Projector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projector.swift; sourceTree = "<group>"; };
 		4317E2FB255594F900F26954 /* Inter-Regular-slnt=0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular-slnt=0.ttf"; sourceTree = "<group>"; };
 		4317E2FC255594F900F26954 /* Inter-Bold-slnt=0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold-slnt=0.ttf"; sourceTree = "<group>"; };
 		4317E2FD255594FA00F26954 /* Inter-Black-slnt=0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Black-slnt=0.ttf"; sourceTree = "<group>"; };
@@ -157,6 +159,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		4305F2792570558F00118AF2 /* UITest */ = {
+			isa = PBXGroup;
+			children = (
+				4305F27A257055BC00118AF2 /* Projector.swift */,
+			);
+			path = UITest;
+			sourceTree = "<group>";
+		};
 		4317E2FA255594E100F26954 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +227,7 @@
 		B8B3E2DD24B9EA4400740A6D /* InstantProfits */ = {
 			isa = PBXGroup;
 			children = (
+				4305F2792570558F00118AF2 /* UITest */,
 				4317E2FA255594E100F26954 /* Fonts */,
 				B8D368A324BD204300748F56 /* InstantProfits.entitlements */,
 				B85FA87924BA163200B3804B /* Helpers */,
@@ -476,6 +487,7 @@
 				4317E31A2555AE2600F26954 /* ForgotPasswordViewController.swift in Sources */,
 				B8B3E2DF24B9EA4400740A6D /* AppDelegate.swift in Sources */,
 				B8D368AF24BD5DA200748F56 /* ProfileViewController.swift in Sources */,
+				4305F27B257055BC00118AF2 /* Projector.swift in Sources */,
 				B8D368AD24BD49C100748F56 /* NotificationsViewController.swift in Sources */,
 				B8D368A524BD20ED00748F56 /* PaymentViewController.swift in Sources */,
 				B8D2590224BB687B003314C2 /* SignalsTableViewCell.swift in Sources */,

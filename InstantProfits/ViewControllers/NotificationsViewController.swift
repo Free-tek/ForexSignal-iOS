@@ -109,15 +109,15 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
          cell.title.text = item.title
          cell.body.text = item.body
          if item.title!.lowercased().contains("premium") {
-            cell.icon.image = UIImage(named: "premium2")
+            cell.icon.image = #imageLiteral(resourceName: "premium2")
          }else if item.body!.lowercased().contains("buy") {
-             cell.icon.image = UIImage(named: "buy")
+             cell.icon.image = #imageLiteral(resourceName: "buy")
          }else if item.body!.lowercased().contains("sell") {
-             cell.icon.image = UIImage(named: "sell")
+             cell.icon.image = #imageLiteral(resourceName: "sell")
          }else if item.body!.lowercased().contains("new") {
-             cell.icon.image = UIImage(named: "notifications-")
+             cell.icon.image = #imageLiteral(resourceName: "notifications")
          }else{
-            cell.icon.image = UIImage(named: "notifications-")
+            cell.icon.image = #imageLiteral(resourceName: "notifications")
          }
          
         
