@@ -55,6 +55,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let userID = Auth.auth().currentUser?.uid
         let refUser = Database.database().reference().child("users").child(userID!)
         refUser.child("version").setValue("iOS V1")
+        
+        let userOneSignalId = OneSignal.getPermissionSubscriptionState().subscriptionStatus.userId
+        refUser.child("oneSignalId").setValue(userOneSignalId)
+        
+        
 
         
         premiumView.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)

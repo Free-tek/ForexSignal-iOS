@@ -2,29 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Inter-Thin-slnt=0.ttf</string>
-		<string>Inter-SemiBold-slnt=0.ttf</string>
-		<string>Inter-VariableFont_slnt,wght.ttf</string>
-		<string>Inter-Regular-slnt=0.ttf</string>
-		<string>Inter-Medium-slnt=0.ttf</string>
-		<string>Inter-Light-slnt=0.ttf</string>
-		<string>Inter-ExtraLight-slnt=0.ttf</string>
-		<string>Inter-ExtraBold-0.ttf</string>
-		<string>Inter-Black-slnt=0.ttf</string>
-		<string>Inter-Bold-slnt=0.ttf</string>
-	</array>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
-	<key>CFBundleIconFiles</key>
-	<array>
-		<string>icon.jpeg</string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>instanttprofitslogo.png</string>
+	</array>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -47,9 +32,24 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Inter-Thin-slnt=0.ttf</string>
+		<string>Inter-SemiBold-slnt=0.ttf</string>
+		<string>Inter-VariableFont_slnt,wght.ttf</string>
+		<string>Inter-Regular-slnt=0.ttf</string>
+		<string>Inter-Medium-slnt=0.ttf</string>
+		<string>Inter-Light-slnt=0.ttf</string>
+		<string>Inter-ExtraLight-slnt=0.ttf</string>
+		<string>Inter-ExtraBold-0.ttf</string>
+		<string>Inter-Black-slnt=0.ttf</string>
+		<string>Inter-Bold-slnt=0.ttf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -84,8 +84,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

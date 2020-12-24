@@ -300,7 +300,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDY-R5-CqE">
-                                        <rect key="frame" x="173.5" y="52" width="67.5" height="29"/>
+                                        <rect key="frame" x="170.5" y="52" width="73.5" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="29" id="l39-MD-Jga"/>
                                         </constraints>
@@ -375,7 +375,7 @@
         <!--Home View Controller-->
         <scene sceneID="77a-du-MhA">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="sLY-6O-IZ1" customClass="HomeViewController" customModule="InstantProfits" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" modalPresentationStyle="fullScreen" id="sLY-6O-IZ1" customClass="HomeViewController" customModule="InstantProfits" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7xI-Ue-sA5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1447,7 +1447,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sm2-SY-SEA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="594.20289855072474" y="1679.4642857142856"/>
+            <point key="canvasLocation" x="597" y="1868"/>
         </scene>
     </scenes>
     <resources>

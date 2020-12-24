@@ -30,18 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
         //START OneSignal initialization code
         let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false, kOSSettingsKeyInAppLaunchURL: false]
-        // Replace 'YOUR_ONESIGNAL_APP_ID' with your OneSignal App ID.
         OneSignal.initWithLaunchOptions(launchOptions,
             appId: "bf4684f0-67a6-475f-996a-d8fbf5f961b6",
             handleNotificationReceived: notificationReceivedBlock,
             handleNotificationAction: nil,
             settings: onesignalInitSettings)
         OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
-
-        // The promptForPushNotifications function code will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 6)
-
-
-
 
         //END OneSignal initializataion code
 
@@ -51,6 +45,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 //            let screenSize = DeviceType.iPadPro11.getSize()
 //            Projector.display(rootWindow: rootWindow, testingSize: screenSize)
 //        }
+        
+        
+        //automatic signin with apple
+        if let user = Auth.auth().currentUser{
+            
+            let storyboard = UIStoryboard(name: "Home", bundle: Bundle.main)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! HomeViewController
+            
+            window?.rootViewController?.present(viewController, animated: true, completion: nil)
+            
+            if viewController != nil {
+                viewController.view.frame = (self.window!.frame)
+                self.window!.addSubview(viewController.view)
+                self.window!.bringSubviewToFront(viewController.view)
+            }
+            
+            
+        }
 
 
 

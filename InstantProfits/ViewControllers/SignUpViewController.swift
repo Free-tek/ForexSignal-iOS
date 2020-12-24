@@ -10,6 +10,9 @@ import UIKit
 import Firebase
 import Lottie
 import GoogleSignIn
+import AuthenticationServices
+import CryptoKit
+import FirebaseAuth
 
 class SignUpViewController: UIViewController, GIDSignInDelegate {
     
@@ -25,11 +28,15 @@ class SignUpViewController: UIViewController, GIDSignInDelegate {
     @IBOutlet weak var signUp: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var googleSignIn: UIButton!
+    @IBOutlet weak var appleSignIn: UIButton!
     
     @IBOutlet weak var signInView: UIView!
     
     @IBOutlet weak var signUpScroll: UIScrollView!
     private var countryPicker: UIPickerView?
+    
+    fileprivate var currentNonce: String?
+
     let countries = Utilities.countries
     
     
@@ -58,12 +65,17 @@ class SignUpViewController: UIViewController, GIDSignInDelegate {
         googleSignIn.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
         googleSignIn.layer.cornerRadius = 15
         
+        appleSignIn.addShadowButton(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
+        appleSignIn.layer.cornerRadius = 15
+        
         countryPicker = UIPickerView()
         country.inputView = countryPicker
         countryPicker!.delegate = self
         
         signUp.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
         signUp.layer.cornerRadius = 15
+        
+        
         
 
         self.countryPicker!.delegate = self
@@ -193,7 +205,87 @@ class SignUpViewController: UIViewController, GIDSignInDelegate {
         return nil
     }
     
+    @IBAction func appleSignInFunc(_ sender: Any) {
+    
+        if #available(iOS 13.0, *) {
+            performAppleSignIn()
+        } else {
+            showToast(message: "Sign in with apple is only available for a minimum of iOS13 users", seconds: 1.5)
+    
+        }
+    }
+    
+    @available(iOS 13.0, *)
+    func performAppleSignIn(){
+        let request = createAppleIDRequest()
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        
+        authorizationController.performRequests()
+    }
+    
+    @available(iOS 13.0, *)
+    func createAppleIDRequest() -> ASAuthorizationAppleIDRequest{
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        
+        let nonce = randomNonceString()
+        request.nonce = sha256(nonce)
+        currentNonce = nonce
+        return request
+        
+    }
+    
+    @available(iOS 13, *)
+    private func sha256(_ input: String) -> String {
+      let inputData = Data(input.utf8)
+      let hashedData = SHA256.hash(data: inputData)
+      let hashString = hashedData.compactMap {
+        return String(format: "%02x", $0)
+      }.joined()
+
+      return hashString
+    }
+    
+    
+    private func randomNonceString(length: Int = 32) -> String {
+      precondition(length > 0)
+      let charset: Array<Character> =
+          Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
+      var result = ""
+      var remainingLength = length
+
+      while remainingLength > 0 {
+        let randoms: [UInt8] = (0 ..< 16).map { _ in
+          var random: UInt8 = 0
+          let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
+          if errorCode != errSecSuccess {
+            fatalError("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
+          }
+          return random
+        }
+
+        randoms.forEach { random in
+          if remainingLength == 0 {
+            return
+          }
+
+          if random < charset.count {
+            result.append(charset[Int(random)])
+            remainingLength -= 1
+          }
+        }
+      }
+
+      return result
+    }
+    
+    
     @IBAction func signUpGoogleFunc(_ sender: Any) {
+        GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance().signIn()
     }
     
@@ -248,21 +340,24 @@ class SignUpViewController: UIViewController, GIDSignInDelegate {
                             "version": "iOS V1"
                         ]
 
-
+                        
                         let ref = Database.database().reference().child("users").child(userId!)
 
                         //save user's data
                         ref.setValue(post) { (err, resp) in
+                            
                             if err == nil {
+                                
                                 self.transitionToHome()
                             } else {
-                                self.showToast(message: "Ooops... This email already exists", seconds: 1.5)
-                                print("Posting failed : ")
+                                
+                                self.showToast(message: "Ooops... error signing you up please try again.", seconds: 1.5)
+                                
                                 return
                             }
-                            print("No errors while posting, :")
+                            print("No errors while posting, : qqqq")
                             print(resp)
-
+                           
 
 
 
@@ -272,7 +367,7 @@ class SignUpViewController: UIViewController, GIDSignInDelegate {
 
                 })
                 
-
+        
             }
 
         }
@@ -280,17 +375,15 @@ class SignUpViewController: UIViewController, GIDSignInDelegate {
 
     
     func transitionToHome() {
+        
         // Stop and hide indicator
         self.animationView.stop()
         self.animationView.alpha = 0
-
-        let storyboard = UIStoryboard(name: "Home", bundle: Bundle.main)
-        let viewController = storyboard.instantiateInitialViewController()
-
-        if let viewController = viewController {
-            view.window?.rootViewController = viewController
-            view.window?.makeKeyAndVisible()
-        }
+        
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "Home")
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = viewController
     }
     
     
@@ -332,3 +425,56 @@ extension UIViewController {
     
    
 }
+extension SignUpViewController: ASAuthorizationControllerDelegate{
+    @available(iOS 13.0, *)
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleIDCredentials = authorization.credential as? ASAuthorizationAppleIDCredential{
+            guard let nonce = currentNonce else{
+                fatalError("Invalid State: A login call back was recieved, but no login was sent")
+                showToast(message: "Oops.. we couldn't sign you in via apple, please try again", seconds: 1.3)
+                
+            }
+            
+            guard let appleIDToken = appleIDCredentials.identityToken else{
+                print("unable to find identity token")
+                showToast(message: "Oops.. we couldn't sign you in via apple, please try again", seconds: 1.3)
+                return
+            }
+            
+            guard let fullname = appleIDCredentials.fullName else{
+                print("unable to get fullname")
+                showToast(message: "Oops.. we couldn't sign you in via apple, please try again", seconds: 1.3)
+                return
+            }
+            
+            guard let email = appleIDCredentials.email else{
+                print("unable to get email")
+                showToast(message: "Oops.. we couldn't sign you in via apple, please try again", seconds: 1.3)
+                return
+            }
+            
+            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+                print("unable to convert token to string")
+                showToast(message: "Oops.. we couldn't sign you in via apple, please try again", seconds: 1.3)
+                return
+            }
+            
+            let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, accessToken: nonce)
+            Auth.auth().signIn(with: credential){ (authDataResult, error) in
+                if let user = authDataResult?.user{
+                    
+                }
+            }
+            
+        }
+    }
+}
+
+extension SignUpViewController: ASAuthorizationControllerPresentationContextProviding{
+    @available(iOS 13.0, *)
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+    
+}
+

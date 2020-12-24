@@ -156,23 +156,18 @@ class PremiumPlanViewController: UIViewController, UITableViewDelegate, UITableV
         item = itemList[indexPath.row]
         
         let storyboard = UIStoryboard(name: "Home", bundle: Bundle.main)
-        if #available(iOS 13.0, *) {
-            
-        } else {
-            // Fallback on earlier versions
-        }
-
-           let viewController = storyboard.instantiateViewController(withIdentifier: "paymentPage") as! PaymentViewController
-           viewController.planName = item.planName!
-           viewController.planDescription = item.planDescription!
-           viewController.planPrice = item.planPrice!
-           viewController.planProductId = item.planProductId!
-        
-           viewController.view.window?.rootViewController = viewController
-           viewController.view.window?.makeKeyAndVisible()
+      
+       let viewController = storyboard.instantiateViewController(withIdentifier: "paymentPage") as! PaymentViewController
+       viewController.planName = item.planName!
+       viewController.planDescription = item.planDescription!
+       viewController.planPrice = item.planPrice!
+       viewController.planProductId = item.planProductId!
+    
+       viewController.view.window?.rootViewController = viewController
+       viewController.view.window?.makeKeyAndVisible()
 
 
-           self.present(viewController, animated: true, completion: nil)
+       self.present(viewController, animated: true, completion: nil)
     }
 
 
