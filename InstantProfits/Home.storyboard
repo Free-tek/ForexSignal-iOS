@@ -794,7 +794,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Gq2-hz-6Uf">
             <objects>
-                <tabBarController modalPresentationStyle="fullScreen" id="xM2-l8-VK2" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xM2-l8-VK2" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="HER-gc-Oru"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gaT-uC-9d6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>

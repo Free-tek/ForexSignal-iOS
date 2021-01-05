@@ -13,6 +13,7 @@ import GoogleSignIn
 import AuthenticationServices
 import CryptoKit
 import FirebaseAuth
+import Firebase
 
 class LoginViewController: UIViewController, GIDSignInDelegate {
 
@@ -32,7 +33,8 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
     let animationView = AnimationView()
     
     fileprivate var currentNonce: String?
-
+    
+    static var fromLogin = true
     override func viewDidLoad() {
 
         setUpElements()
@@ -87,7 +89,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
 
             self.animationView.alpha = 1
             self.animationView.animation = Animation.named("loading")
-            self.animationView.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
+            self.animationView.frame = CGRect(x: 0, y: 0, width: 150, height: 200)
             self.animationView.center = self.view.center
             self.animationView.contentMode = .scaleAspectFit
             self.animationView.loopMode = .loop
@@ -234,17 +236,21 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
 
     func transitionToHome() {
         // Stop and hide indicator
+        self.loginView.alpha = 1
         self.animationView.stop()
         self.animationView.alpha = 0
 
-        
-        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "Home")
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = viewController
+        print("this was your fromLogin \(LoginViewController.fromLogin)")
+        if LoginViewController.fromLogin == true{
+            self.performSegue(withIdentifier: "goToHomeFromLogin", sender: self)
+        }else{
+            self.performSegue(withIdentifier: "goToHomeFromLogin", sender: self)
+        }
         
         
     }
+    
+    
 
 
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
@@ -257,6 +263,22 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
 
         }
         let credentials = GoogleAuthProvider.credential(withIDToken: auth.idToken, accessToken: auth.accessToken)
+        
+        
+        //show loader
+        self.animationView.alpha = 1
+        self.animationView.animation = Animation.named("loading")
+        self.animationView.frame = CGRect(x: 0, y: 0, width: 150, height: 200)
+        self.animationView.center = self.view.center
+        self.animationView.contentMode = .scaleAspectFit
+        self.animationView.loopMode = .loop
+        self.animationView.play()
+        self.view.addSubview(self.animationView)
+
+        //switch views off
+        loginView.alpha = 0.2
+        
+        
         Auth.auth().signIn(with: credentials) { (authResult, error) in
             if let error = error {
                 print(error.localizedDescription)
@@ -303,20 +325,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
 
                         //save user's data
                         ref.setValue(post) { (err, resp) in
-                            if err == nil {
-                                self.transitionToHome()
-                            } else {
-                                self.showToast(message: "Ooops... This email already exists", seconds: 1.5)
-                                print("Posting failed : ")
-                                return
-                            }
-                            print("No errors while posting, :123")
-                            print(resp)
-                            
-
-
-
-
+                            self.transitionToHome()
                         }
                     }
 
@@ -416,11 +425,68 @@ extension LoginViewController: ASAuthorizationControllerDelegate{
                 return
             }
             
-            let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, accessToken: nonce)
+            let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
+        
+            
+            //show loader
+            self.animationView.alpha = 1
+            self.animationView.animation = Animation.named("loading")
+            self.animationView.frame = CGRect(x: 0, y: 0, width: 150, height: 200)
+            self.animationView.center = self.view.center
+            self.animationView.contentMode = .scaleAspectFit
+            self.animationView.loopMode = .loop
+            self.animationView.play()
+            self.view.addSubview(self.animationView)
+
+            //switch views off
+            loginView.alpha = 0.2
+            
             
             Auth.auth().signIn(with: credential){ (authDataResult, error) in
                 if let user = authDataResult?.user{
-                    self.transitionToHome()
+                    let userId = user.uid
+                    let ref = Database.database().reference().child("users")
+                    
+                    ref.observeSingleEvent(of: .value, with: { (snapshot) in
+
+                        if snapshot.hasChild(userId) {
+                            print("user already exists \(userId)")
+                            self.transitionToHome()
+
+                        } else {
+
+                            let post: [String: Any] = [
+                                "name": appleIDCredentials.fullName?.givenName! ?? "",
+                                "surname": appleIDCredentials.fullName?.familyName ?? "",
+                                "phoneNumber": "",
+                                "password": "Apple Sign In",
+                                "email": appleIDCredentials.email ?? "",
+                                "country": "",
+                                "city": "",
+                                "isAdmin": 0,
+                                "paid": 0,
+                                "remainingSignals": 0,
+                                "verified": "true",
+                                "signalsLeft": 0,
+                                "version": "iOS V1"
+                            ]
+
+
+                            let ref = Database.database().reference().child("users").child(userId)
+
+                            //save user's data
+                            ref.setValue(post) { (err, resp) in
+                                self.transitionToHome()
+                                
+                            }
+                        }
+
+
+                    })
+
+                }else{
+                    print("got here successfully check you 34567")
+                    self.showToast(message: "Ooops... we couldn't sign you in", seconds: 3)
                 }
             }
             

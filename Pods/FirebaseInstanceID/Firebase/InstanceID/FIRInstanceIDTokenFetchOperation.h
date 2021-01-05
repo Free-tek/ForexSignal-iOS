@@ -14,11 +14,13 @@
  * limitations under the License.
  */
 
-#import "FIRInstanceIDTokenOperation.h"
+#import "Firebase/InstanceID/FIRInstanceIDTokenOperation.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 FOUNDATION_EXPORT NSString *const kFIRInstanceIDFirebaseUserAgentKey;
+
+FOUNDATION_EXPORT NSString *const kFIRInstanceIDFirebaseHeartbeatKey;
 
 @interface FIRInstanceIDTokenFetchOperation : FIRInstanceIDTokenOperation
 
@@ -26,7 +28,7 @@ FOUNDATION_EXPORT NSString *const kFIRInstanceIDFirebaseUserAgentKey;
                                    scope:(NSString *)scope
                                  options:(nullable NSDictionary<NSString *, NSString *> *)options
                       checkinPreferences:(FIRInstanceIDCheckinPreferences *)checkinPreferences
-                                 keyPair:(FIRInstanceIDKeyPair *)keyPair;
+                              instanceID:(NSString *)instanceID;
 
 @end
 NS_ASSUME_NONNULL_END

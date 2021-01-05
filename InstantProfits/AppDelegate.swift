@@ -50,23 +50,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         //automatic signin with apple
         if let user = Auth.auth().currentUser{
             
-            let storyboard = UIStoryboard(name: "Home", bundle: Bundle.main)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! HomeViewController
+            try! Auth.auth().signOut()
             
-            window?.rootViewController?.present(viewController, animated: true, completion: nil)
-            
-            if viewController != nil {
-                viewController.view.frame = (self.window!.frame)
-                self.window!.addSubview(viewController.view)
-                self.window!.bringSubviewToFront(viewController.view)
-            }
-            
-            
+//            let storyboard = UIStoryboard(name: "Home", bundle: Bundle.main)
+//            let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! HomeViewController
+//            self.window = UIWindow(frame: UIScreen.main.bounds)
+//            self.window?.rootViewController = viewController
+//            self.window?.makeKeyAndVisible()
+
+        
         }
-
-
-
-
 
         return true
     }

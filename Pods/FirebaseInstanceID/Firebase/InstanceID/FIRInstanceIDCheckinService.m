@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-#import "FIRInstanceIDCheckinService.h"
+#import "Firebase/InstanceID/FIRInstanceIDCheckinService.h"
 
-#import "FIRInstanceIDCheckinPreferences+Internal.h"
-#import "FIRInstanceIDCheckinPreferences_Private.h"
-#import "FIRInstanceIDDefines.h"
-#import "FIRInstanceIDLogger.h"
-#import "FIRInstanceIDStore.h"
-#import "FIRInstanceIDUtilities.h"
-#import "NSError+FIRInstanceID.h"
+#import "Firebase/InstanceID/FIRInstanceIDCheckinPreferences+Internal.h"
+#import "Firebase/InstanceID/FIRInstanceIDCheckinPreferences_Private.h"
+#import "Firebase/InstanceID/FIRInstanceIDDefines.h"
+#import "Firebase/InstanceID/FIRInstanceIDLogger.h"
+#import "Firebase/InstanceID/FIRInstanceIDStore.h"
+#import "Firebase/InstanceID/FIRInstanceIDUtilities.h"
+#import "Firebase/InstanceID/NSError+FIRInstanceID.h"
 
 static NSString *const kDeviceCheckinURL = @"https://device-provisioning.googleapis.com/checkin";
 
@@ -210,7 +210,6 @@ static FIRInstanceIDURLRequestTestBlock testBlock;
   NSInteger userNumber = 0;        // Multi Profile may change this.
   NSInteger userSerialNumber = 0;  // Multi Profile may change this
 
-  uint32_t loggingID = arc4random();
   NSString *timeZone = [NSTimeZone localTimeZone].name;
   int64_t lastCheckingTimestampMillis = checkinPreferences.lastCheckinTimestampMillis;
 
@@ -222,7 +221,6 @@ static FIRInstanceIDURLRequestTestBlock testBlock;
       @"last_checkin_msec" : @(lastCheckingTimestampMillis),
     },
     @"fragment" : @(kFragment),
-    @"logging_id" : @(loggingID),
     @"locale" : locale,
     @"version" : @(kCheckinVersion),
     @"digest" : checkinPreferences.digest ?: @"",

@@ -20,6 +20,7 @@
 		4317E30C255594FB00F26954 /* Inter-Medium-slnt=0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4317E303255594FB00F26954 /* Inter-Medium-slnt=0.ttf */; };
 		4317E3102555950A00F26954 /* Inter-VariableFont_slnt,wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4317E30F2555950A00F26954 /* Inter-VariableFont_slnt,wght.ttf */; };
 		4317E31A2555AE2600F26954 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4317E3192555AE2600F26954 /* ForgotPasswordViewController.swift */; };
+		432AF57C25A4B9CB00BBCFBC /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 432AF57B25A4B9CB00BBCFBC /* loading.json */; };
 		432D92942570918300EFCE9F /* instanttprofitslogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 432D92932570918300EFCE9F /* instanttprofitslogo.png */; };
 		83A55A0704DFC5CDA82CA435 /* Pods_InstantProfits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26CF65FF16366AC28C00F344 /* Pods_InstantProfits.framework */; };
 		B80D559B24E156C90083A707 /* sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = B80D559A24E156C90083A707 /* sound.wav */; };
@@ -27,7 +28,6 @@
 		B85FA87624B9F17A00B3804B /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B85FA87524B9F17A00B3804B /* Home.storyboard */; };
 		B85FA87824BA143C00B3804B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85FA87724BA143C00B3804B /* LoginViewController.swift */; };
 		B85FA87B24BA165800B3804B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85FA87A24BA165800B3804B /* Utilities.swift */; };
-		B85FA87D24BA181100B3804B /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = B85FA87C24BA181100B3804B /* loading.json */; };
 		B85FA88124BA1FA900B3804B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85FA88024BA1FA900B3804B /* SignUpViewController.swift */; };
 		B8B3E2DF24B9EA4400740A6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B3E2DE24B9EA4400740A6D /* AppDelegate.swift */; };
 		B8B3E2E124B9EA4400740A6D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B3E2E024B9EA4400740A6D /* SceneDelegate.swift */; };
@@ -91,6 +91,7 @@
 		4317E303255594FB00F26954 /* Inter-Medium-slnt=0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium-slnt=0.ttf"; sourceTree = "<group>"; };
 		4317E30F2555950A00F26954 /* Inter-VariableFont_slnt,wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-VariableFont_slnt,wght.ttf"; sourceTree = "<group>"; };
 		4317E3192555AE2600F26954 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		432AF57B25A4B9CB00BBCFBC /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		432D92932570918300EFCE9F /* instanttprofitslogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instanttprofitslogo.png; sourceTree = "<group>"; };
 		9F942F1D99BFD8C4F06F88BA /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		A854841D64770214370A1740 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
@@ -99,7 +100,6 @@
 		B85FA87524B9F17A00B3804B /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		B85FA87724BA143C00B3804B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B85FA87A24BA165800B3804B /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		B85FA87C24BA181100B3804B /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		B85FA88024BA1FA900B3804B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		B8B3E2DB24B9EA4400740A6D /* InstantProfits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstantProfits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8B3E2DE24B9EA4400740A6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -240,9 +240,9 @@
 				B8B3E2E724B9EA4800740A6D /* Assets.xcassets */,
 				B8B3E2E924B9EA4800740A6D /* LaunchScreen.storyboard */,
 				B80D559A24E156C90083A707 /* sound.wav */,
+				432AF57B25A4B9CB00BBCFBC /* loading.json */,
 				B8B3E2EC24B9EA4800740A6D /* Info.plist */,
 				B8B9117524DCD0BA0024C53A /* GoogleService-Info.plist */,
-				B85FA87C24BA181100B3804B /* loading.json */,
 				B85FA87524B9F17A00B3804B /* Home.storyboard */,
 			);
 			path = InstantProfits;
@@ -369,8 +369,8 @@
 				4317E307255594FB00F26954 /* Inter-SemiBold-slnt=0.ttf in Resources */,
 				4317E308255594FB00F26954 /* Inter-ExtraBold-0.ttf in Resources */,
 				B85FA87624B9F17A00B3804B /* Home.storyboard in Resources */,
+				432AF57C25A4B9CB00BBCFBC /* loading.json in Resources */,
 				4317E305255594FB00F26954 /* Inter-Bold-slnt=0.ttf in Resources */,
-				B85FA87D24BA181100B3804B /* loading.json in Resources */,
 				4317E306255594FB00F26954 /* Inter-Black-slnt=0.ttf in Resources */,
 				B8B3E2E824B9EA4800740A6D /* Assets.xcassets in Resources */,
 				B80D559B24E156C90083A707 /* sound.wav in Resources */,
@@ -660,7 +660,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = InstantProfits/InstantProfits.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 9NJAC98X5A;
 				INFOPLIST_FILE = InstantProfits/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -683,7 +683,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = InstantProfits/InstantProfits.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 9NJAC98X5A;
 				INFOPLIST_FILE = InstantProfits/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -703,7 +703,7 @@
 			baseConfigurationReference = 9F942F1D99BFD8C4F06F88BA /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 9NJAC98X5A;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -725,7 +725,7 @@
 			baseConfigurationReference = A854841D64770214370A1740 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 9NJAC98X5A;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

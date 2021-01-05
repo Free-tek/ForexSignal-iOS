@@ -27,8 +27,8 @@ class SignUpViewController: UIViewController, GIDSignInDelegate {
     @IBOutlet weak var country: UITextField!
     @IBOutlet weak var signUp: UIButton!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var googleSignIn: UIButton!
-    @IBOutlet weak var appleSignIn: UIButton!
+    @IBOutlet weak var googleSignUp: UIButton!
+    @IBOutlet weak var appleSignUp: UIButton!
     
     @IBOutlet weak var signInView: UIView!
     
@@ -62,11 +62,11 @@ class SignUpViewController: UIViewController, GIDSignInDelegate {
         signInView.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
         signInView.layer.cornerRadius = 15
         
-        googleSignIn.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
-        googleSignIn.layer.cornerRadius = 15
+        googleSignUp.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
+        googleSignUp.layer.cornerRadius = 15
         
-        appleSignIn.addShadowButton(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
-        appleSignIn.layer.cornerRadius = 15
+        appleSignUp.addShadowButton(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
+        appleSignUp.layer.cornerRadius = 15
         
         countryPicker = UIPickerView()
         country.inputView = countryPicker
@@ -91,7 +91,7 @@ class SignUpViewController: UIViewController, GIDSignInDelegate {
            
             self.animationView.alpha = 1
             self.animationView.animation = Animation.named("loading")
-            self.animationView.frame = CGRect(x:0, y:0, width: 150, height: 150)
+            self.animationView.frame = CGRect(x:0, y:0, width: 150, height: 200)
             self.animationView.center = self.view.center
             self.animationView.contentMode = .scaleAspectFit
             self.animationView.loopMode = .loop
@@ -104,7 +104,7 @@ class SignUpViewController: UIViewController, GIDSignInDelegate {
                 //check for errors
                 if err != nil{
                     //there was an error
-                    self.showToast(message: "Please try again, we could not create your account", seconds: 1.5)
+                    self.showToast(message: "Please try again, \(err)", seconds: 1.5)
                     
                     
                     self.animationView.stop()
@@ -112,7 +112,6 @@ class SignUpViewController: UIViewController, GIDSignInDelegate {
                     
                     self.signUpScroll.alpha = 1
                     
-                    self.showToast(message: "Please try again, we could not create your account", seconds: 1)
                     self.animationView.stop()
                     self.animationView.alpha = 0
                     
@@ -197,22 +196,23 @@ class SignUpViewController: UIViewController, GIDSignInDelegate {
             
         }else if password.text?.trimmingCharacters(in: .whitespacesAndNewlines) != confirmPassword.text?.trimmingCharacters(in: .whitespacesAndNewlines) {
             return "Your passwords dont match"
-            
-        }else if country.text == "Select Country" {
+        }else if country.text == "Select Country" ||  country.text == ""{
             return "Please select a country"
         }
         
         return nil
     }
     
-    @IBAction func appleSignInFunc(_ sender: Any) {
-    
+    @IBAction func appleSignUpFunc(_ sender: Any) {
+        print("click worked here")
         if #available(iOS 13.0, *) {
+            LoginViewController.fromLogin = false
             performAppleSignIn()
         } else {
             showToast(message: "Sign in with apple is only available for a minimum of iOS13 users", seconds: 1.5)
     
         }
+        
     }
     
     @available(iOS 13.0, *)
@@ -283,8 +283,9 @@ class SignUpViewController: UIViewController, GIDSignInDelegate {
       return result
     }
     
-    
-    @IBAction func signUpGoogleFunc(_ sender: Any) {
+    @IBAction func googleSignUpFunc(_ sender: Any) {
+        print("click worked here")
+        LoginViewController.fromLogin = false
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance().signIn()
     }
@@ -299,6 +300,22 @@ class SignUpViewController: UIViewController, GIDSignInDelegate {
 
         }
         let credentials = GoogleAuthProvider.credential(withIDToken: auth.idToken, accessToken: auth.accessToken)
+        
+        
+        //show loader
+        self.animationView.alpha = 1
+        self.animationView.animation = Animation.named("loading")
+        self.animationView.frame = CGRect(x: 0, y: 0, width: 150, height: 200)
+        self.animationView.center = self.view.center
+        self.animationView.contentMode = .scaleAspectFit
+        self.animationView.loopMode = .loop
+        self.animationView.play()
+        self.view.addSubview(self.animationView)
+
+        //switch views off
+        self.signUpScroll.alpha = 0.2
+        print("got here watch out 1")
+        
         Auth.auth().signIn(with: credentials) { (authResult, error) in
             if let error = error {
                 print(error.localizedDescription)
@@ -311,19 +328,24 @@ class SignUpViewController: UIViewController, GIDSignInDelegate {
                 let name = user.profile.givenName
                 let email = user.profile.email
 
-
+                
                 let userId = Auth.auth().currentUser?.uid
                 let ref = Database.database().reference().child("users")
-
+                print("Login Successful. 2 \(userId)")
 
                 ref.observeSingleEvent(of: .value, with: { (snapshot) in
-
+                    print("Login Successful. 3 \(userId)")
+                    
                     if snapshot.hasChild(userId!) {
+                        print("Login Successful. 4 \(userId)")
+                        print("got here watch out 2")
                         print("user already exists \(userId!)")
                         self.transitionToHome()
 
                     } else {
-
+                        
+                        print("Login Successful. 5 \(userId)")
+                        print("got here watch out 3")
                         let post: [String: Any] = [
                             "name": name ?? "",
                             "surname": surname ?? "",
@@ -340,34 +362,20 @@ class SignUpViewController: UIViewController, GIDSignInDelegate {
                             "version": "iOS V1"
                         ]
 
-                        
+
                         let ref = Database.database().reference().child("users").child(userId!)
 
                         //save user's data
                         ref.setValue(post) { (err, resp) in
-                            
-                            if err == nil {
-                                
-                                self.transitionToHome()
-                            } else {
-                                
-                                self.showToast(message: "Ooops... error signing you up please try again.", seconds: 1.5)
-                                
-                                return
-                            }
-                            print("No errors while posting, : qqqq")
-                            print(resp)
-                           
-
-
-
+                            print("got here watch out 4")
+                            self.transitionToHome()
                         }
                     }
 
 
                 })
                 
-        
+
             }
 
         }
@@ -376,14 +384,14 @@ class SignUpViewController: UIViewController, GIDSignInDelegate {
     
     func transitionToHome() {
         
+        print("got here watch out 5")
+        signUpScroll.alpha = 1
         // Stop and hide indicator
         self.animationView.stop()
         self.animationView.alpha = 0
         
-        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "Home")
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = viewController
+        self.performSegue(withIdentifier: "goToHomeFromSignup", sender: self)
+        
     }
     
     
@@ -428,6 +436,7 @@ extension UIViewController {
 extension SignUpViewController: ASAuthorizationControllerDelegate{
     @available(iOS 13.0, *)
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+    
         if let appleIDCredentials = authorization.credential as? ASAuthorizationAppleIDCredential{
             guard let nonce = currentNonce else{
                 fatalError("Invalid State: A login call back was recieved, but no login was sent")
@@ -440,33 +449,81 @@ extension SignUpViewController: ASAuthorizationControllerDelegate{
                 showToast(message: "Oops.. we couldn't sign you in via apple, please try again", seconds: 1.3)
                 return
             }
-            
-            guard let fullname = appleIDCredentials.fullName else{
-                print("unable to get fullname")
-                showToast(message: "Oops.. we couldn't sign you in via apple, please try again", seconds: 1.3)
-                return
-            }
-            
-            guard let email = appleIDCredentials.email else{
-                print("unable to get email")
-                showToast(message: "Oops.. we couldn't sign you in via apple, please try again", seconds: 1.3)
-                return
-            }
-            
+        
             guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
                 print("unable to convert token to string")
                 showToast(message: "Oops.. we couldn't sign you in via apple, please try again", seconds: 1.3)
                 return
             }
             
-            let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, accessToken: nonce)
+            let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
+        
+            
+            //show loader
+            self.animationView.alpha = 1
+            self.animationView.animation = Animation.named("loading")
+            self.animationView.frame = CGRect(x: 0, y: 0, width: 150, height: 200)
+            self.animationView.center = self.view.center
+            self.animationView.contentMode = .scaleAspectFit
+            self.animationView.loopMode = .loop
+            self.animationView.play()
+            self.view.addSubview(self.animationView)
+
+            //switch views off
+            self.signUpScroll.alpha = 0.2
+            
+            
             Auth.auth().signIn(with: credential){ (authDataResult, error) in
                 if let user = authDataResult?.user{
+                    let userId = user.uid
+                    let ref = Database.database().reference().child("users")
                     
+                    ref.observeSingleEvent(of: .value, with: { (snapshot) in
+
+                        if snapshot.hasChild(userId) {
+                            print("user already exists \(userId)")
+                            self.transitionToHome()
+
+                        } else {
+
+                            let post: [String: Any] = [
+                                "name": appleIDCredentials.fullName?.givenName! ?? "",
+                                "surname": appleIDCredentials.fullName?.familyName ?? "",
+                                "phoneNumber": "",
+                                "password": "Apple Sign In",
+                                "email": appleIDCredentials.email ?? "",
+                                "country": "",
+                                "city": "",
+                                "isAdmin": 0,
+                                "paid": 0,
+                                "remainingSignals": 0,
+                                "verified": "true",
+                                "signalsLeft": 0,
+                                "version": "iOS V1"
+                            ]
+
+
+                            let ref = Database.database().reference().child("users").child(userId)
+
+                            //save user's data
+                            ref.setValue(post) { (err, resp) in
+                                
+                                self.transitionToHome()
+                                
+                            }
+                        }
+
+
+                    })
+
+                }else{
+                    print("got here successfully check you 34567")
+                    self.showToast(message: "Ooops... we couldn't sign you in", seconds: 3)
                 }
             }
             
         }
+    
     }
 }
 

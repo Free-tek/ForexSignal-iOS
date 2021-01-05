@@ -15,10 +15,8 @@
         <array key="Inter-Light-slnt=0.ttf">
             <string>Inter-Light</string>
         </array>
-        <array key="Inter-Regular-slnt=0.ttf">
-            <string>Inter-Regular</string>
-        </array>
         <array key="Inter-VariableFont_slnt,wght.ttf">
+            <string>Inter-Regular</string>
             <string>Inter-Regular_Bold</string>
             <string>Inter-Regular_SemiBold</string>
         </array>
@@ -32,14 +30,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Jne-Xb-OQ4">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Jne-Xb-OQ4">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="414" id="1Gn-bF-vxR"/>
                                     <constraint firstAttribute="height" constant="896" id="WMG-VW-Txh"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="Cn5-8k-yvp">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Cn5-8k-yvp">
                                 <rect key="frame" x="88.5" y="328.5" width="237" height="239"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="237" id="jHz-ks-rca"/>
@@ -48,7 +46,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.87450980392156863" green="0.87450980392156863" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="Jne-Xb-OQ4" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="D0g-U6-9Tq"/>
                             <constraint firstItem="Cn5-8k-yvp" firstAttribute="centerY" secondItem="Jne-Xb-OQ4" secondAttribute="centerY" id="HBI-dO-OxS"/>
@@ -136,7 +134,8 @@
                                             <constraint firstAttribute="width" constant="130" id="dwq-HC-4Ld"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="12"/>
-                                        <state key="normal" title="  Sign In" image="google">
+                                        <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Sign In" image="google">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -151,6 +150,7 @@
                                             <constraint firstAttribute="width" constant="130" id="aR8-cj-4S2"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="11"/>
+                                        <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="  Sign In " image="apple">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -194,7 +194,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xUk-rc-iY3">
-                                <rect key="frame" x="40" y="188" width="334" height="318"/>
+                                <rect key="frame" x="40" y="237" width="334" height="318"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eQ8-kc-csg">
                                         <rect key="frame" x="8" y="8" width="318" height="60"/>
@@ -387,7 +387,7 @@
                             <constraint firstItem="Y45-46-1dj" firstAttribute="top" secondItem="SPA-ZS-t8I" secondAttribute="top" id="Yay-XD-2Pq"/>
                             <constraint firstItem="xUk-rc-iY3" firstAttribute="centerX" secondItem="tq4-go-aDR" secondAttribute="centerX" id="eNy-wC-3rY"/>
                             <constraint firstItem="gac-eL-9JY" firstAttribute="leading" secondItem="tq4-go-aDR" secondAttribute="leading" constant="26" id="hqf-ep-2lL"/>
-                            <constraint firstItem="xUk-rc-iY3" firstAttribute="top" secondItem="gac-eL-9JY" secondAttribute="bottom" constant="-4" id="m9K-g0-0kp"/>
+                            <constraint firstItem="xUk-rc-iY3" firstAttribute="top" secondItem="gac-eL-9JY" secondAttribute="bottom" constant="45" id="m9K-g0-0kp"/>
                         </constraints>
                     </view>
                     <connections>
@@ -400,6 +400,7 @@
                         <outlet property="password" destination="faL-4X-Kwu" id="1oZ-hh-eBk"/>
                         <outlet property="signInWithApple" destination="dbG-d6-bmf" id="lQV-3L-eg9"/>
                         <outlet property="signUp" destination="geb-Yh-vAG" id="d5j-Io-hSK"/>
+                        <segue destination="5SX-9s-4fw" kind="presentation" identifier="goToHomeFromLogin" id="Koy-zZ-k79"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="djI-a8-keh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -882,7 +883,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lqB-dU-nEQ">
+                                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lqB-dU-nEQ">
                                         <rect key="frame" x="133.5" y="20" width="1" height="20"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -890,7 +891,7 @@
                                             <constraint firstAttribute="width" constant="1" id="ulm-JD-gm8"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ft0-PQ-KF9">
+                                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ft0-PQ-KF9">
                                         <rect key="frame" x="133" y="61" width="1" height="20"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -898,7 +899,7 @@
                                             <constraint firstAttribute="height" constant="20" id="bLd-Kr-CZp"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M01-T8-LJf">
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M01-T8-LJf">
                                         <rect key="frame" x="170" y="31" width="190" height="38"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -910,10 +911,10 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="signUpGoogleFunc:" destination="Xwy-X0-DjW" eventType="touchUpInside" id="vo7-QP-ndf"/>
+                                            <action selector="googleSignUpFunc:" destination="Xwy-X0-DjW" eventType="touchUpInside" id="xPc-A9-8kQ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j0s-vV-IPe">
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j0s-vV-IPe">
                                         <rect key="frame" x="170" y="77" width="190" height="38"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -924,10 +925,10 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="appleSignInFunc:" destination="Xwy-X0-DjW" eventType="touchUpInside" id="Os0-Fa-FAe"/>
+                                            <action selector="appleSignUpFunc:" destination="Xwy-X0-DjW" eventType="touchUpInside" id="edv-2T-E7D"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Wo-hi-00J">
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Wo-hi-00J">
                                         <rect key="frame" x="128.5" y="43" width="13" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="13" id="3gg-Uz-6oV"/>
@@ -985,12 +986,12 @@
                     </view>
                     <size key="freeformSize" width="414" height="896"/>
                     <connections>
-                        <outlet property="appleSignIn" destination="j0s-vV-IPe" id="9B0-jI-PWD"/>
+                        <outlet property="appleSignUp" destination="j0s-vV-IPe" id="bVc-1J-Qiu"/>
                         <outlet property="confirmPassword" destination="Jz6-DF-u4e" id="HIi-LQ-wWf"/>
                         <outlet property="country" destination="Bt3-Gl-XNZ" id="DpL-ty-hOI"/>
                         <outlet property="email" destination="DT8-cz-ZXT" id="xew-KA-uTN"/>
                         <outlet property="firstName" destination="iSG-2T-XnL" id="pXh-t6-mUS"/>
-                        <outlet property="googleSignIn" destination="M01-T8-LJf" id="NF6-lS-Mch"/>
+                        <outlet property="googleSignUp" destination="M01-T8-LJf" id="kxm-E1-s0B"/>
                         <outlet property="loginButton" destination="2C1-Ko-XJV" id="NbF-YT-ceS"/>
                         <outlet property="password" destination="yo5-La-2iP" id="H4L-9v-nmz"/>
                         <outlet property="phoneNo" destination="po4-KE-t9r" id="heu-qB-Jjj"/>
@@ -1152,21 +1153,30 @@
             </objects>
             <point key="canvasLocation" x="2398.5507246376815" y="109.82142857142857"/>
         </scene>
+        <!--TabBarController-->
+        <scene sceneID="44N-C4-bnl">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="TabBarController" id="5SX-9s-4fw" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NkM-le-1CD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3141" y="106"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="bXq-bU-CsG"/>
         <segue reference="hDe-d1-sxU"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="apple" width="25" height="25"/>
+        <image name="apple" width="24" height="24"/>
         <image name="background" width="375" height="812"/>
         <image name="contact" width="96" height="96"/>
         <image name="email-1" width="100" height="100"/>
-        <image name="google" width="32" height="32"/>
+        <image name="google" width="24" height="24"/>
         <image name="header-bg" width="375" height="408"/>
         <image name="icons8-back" width="33.333332061767578" height="33.333332061767578"/>
         <image name="icons8-bulleted_list" width="96" height="96"/>
         <image name="lock" width="100" height="100"/>
-        <image name="logo-1" width="219" height="185"/>
+        <image name="logo" width="1517" height="1368"/>
         <image name="phone-1" width="100" height="100"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

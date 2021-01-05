@@ -50,7 +50,7 @@ class ForgotPasswordViewController: UIViewController {
             //show loading
             self.animationView.alpha = 1
             self.animationView.animation = Animation.named("loading")
-            self.animationView.frame = CGRect(x:0, y:0, width: 150, height: 150)
+            self.animationView.frame = CGRect(x:0, y:0, width: 150, height: 200)
             self.animationView.center = self.view.center
             self.animationView.contentMode = .scaleAspectFit
             self.animationView.loopMode = .loop
