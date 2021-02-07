@@ -104,7 +104,7 @@ class SignUpViewController: UIViewController, GIDSignInDelegate {
                 //check for errors
                 if err != nil{
                     //there was an error
-                    self.showToast(message: "Please try again, \(err)", seconds: 1.5)
+                    self.showToast(message: "Please try again, \(err!.localizedDescription)", seconds: 1.5)
                     
                     
                     self.animationView.stop()

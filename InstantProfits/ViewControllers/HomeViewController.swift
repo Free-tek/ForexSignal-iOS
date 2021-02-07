@@ -65,7 +65,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         premiumView.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
         premiumView.layer.cornerRadius = 15
         
-        let insetsTrack = UIEdgeInsets(top: 100, left: 0, bottom: 200, right: 0)
+        let insetsTrack = UIEdgeInsets(top: 100, left: 0, bottom: 400, right: 0)
         tableView.contentInset = insetsTrack
     
         addSignalButton.addShadowButton(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 5.0, opacity: 0.35)
@@ -80,7 +80,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
 
         tableView.alpha = 0
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 130, right: 0);
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 600, right: 0);
         
         
         //----set up activity indicator-----
@@ -296,6 +296,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.takeProfit.text = item.itemTradeProfit
         cell.stopLoss.text = item.itemStopLoss
         cell.decision.text = item.itemDecision
+        
 
         let tradeProfit = Double(item.itemTradeProfit!)
         let tradePrice = Double(item.itemTradePrice!)
@@ -304,7 +305,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let multiplier = pow(10.0, numberOfPlaces)
         let rounded = round((tradeProfit! - tradePrice!) * multiplier) / multiplier
 
-        cell.takeProfitPercentage.text = String(rounded)
+        cell.takeProfitPercentage.text = item.itemTradeOutcome
         cell.selectionStyle = .none
         
     

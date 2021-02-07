@@ -30,6 +30,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
     @IBOutlet weak var signInWithApple: UIButton!
     @IBOutlet weak var headerView: UIView!
     
+    var toHome: Bool! = false
     let animationView = AnimationView()
     
     fileprivate var currentNonce: String?
@@ -485,7 +486,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate{
                     })
 
                 }else{
-                    print("got here successfully check you 34567")
                     self.showToast(message: "Ooops... we couldn't sign you in", seconds: 3)
                 }
             }

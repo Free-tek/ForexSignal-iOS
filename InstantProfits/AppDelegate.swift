@@ -50,15 +50,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         //automatic signin with apple
         if let user = Auth.auth().currentUser{
             
-            try! Auth.auth().signOut()
+            let storyboard = UIStoryboard(name: "Home", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! HomeViewController
+            let navController = UINavigationController.init(rootViewController: viewController)
+
+               if let window = self.window, let rootViewController = window.rootViewController {
+                   var currentController = rootViewController
+                   while let presentedController = currentController.presentedViewController {
+                       currentController = presentedController
+                    }
+                       currentController.present(navController, animated: true, completion: nil)
+               }
             
+            
+            
+
 //            let storyboard = UIStoryboard(name: "Home", bundle: Bundle.main)
 //            let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! HomeViewController
 //            self.window = UIWindow(frame: UIScreen.main.bounds)
 //            self.window?.rootViewController = viewController
 //            self.window?.makeKeyAndVisible()
+//            self.navigationController!.pushViewController(viewController)
 
-        
         }
 
         return true

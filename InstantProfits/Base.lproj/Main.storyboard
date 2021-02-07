@@ -131,11 +131,9 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="38" id="Aw7-LA-BRQ"/>
-                                            <constraint firstAttribute="width" constant="130" id="dwq-HC-4Ld"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="12"/>
-                                        <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Sign In" image="google">
+                                        <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="10"/>
+                                        <state key="normal" title=" Sign In with Google" image="google">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -147,11 +145,9 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="38" id="Gcd-Gh-fPN"/>
-                                            <constraint firstAttribute="width" constant="130" id="aR8-cj-4S2"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="11"/>
-                                        <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="  Sign In " image="apple">
+                                        <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="10"/>
+                                        <state key="normal" title="  Sign In with Apple" image="apple">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -189,8 +185,9 @@
                                     <constraint firstItem="iwz-ev-Hcb" firstAttribute="top" secondItem="Eg1-Id-eGz" secondAttribute="bottom" constant="-6" id="ojU-V5-p35"/>
                                     <constraint firstItem="Eg1-Id-eGz" firstAttribute="top" secondItem="gac-eL-9JY" secondAttribute="top" constant="5" id="pks-WP-Go2"/>
                                     <constraint firstItem="TlD-es-aJq" firstAttribute="leading" secondItem="UO8-f8-OvL" secondAttribute="trailing" constant="13.5" id="qkQ-EJ-ZyY"/>
-                                    <constraint firstItem="dbG-d6-bmf" firstAttribute="leading" secondItem="TlD-es-aJq" secondAttribute="trailing" constant="-130" id="wFt-Mt-JWt"/>
+                                    <constraint firstItem="dbG-d6-bmf" firstAttribute="leading" secondItem="TlD-es-aJq" secondAttribute="leading" id="wFt-Mt-JWt"/>
                                     <constraint firstAttribute="trailing" secondItem="TlD-es-aJq" secondAttribute="trailing" constant="23" id="xfe-Sc-aij"/>
+                                    <constraint firstItem="dbG-d6-bmf" firstAttribute="width" secondItem="TlD-es-aJq" secondAttribute="width" id="yES-QH-j0x"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xUk-rc-iY3">
@@ -1003,7 +1000,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xW0-D4-5wr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1671.0144927536232" y="142.63392857142856"/>
+            <point key="canvasLocation" x="1671" y="103"/>
         </scene>
         <!--Forgot Password View Controller-->
         <scene sceneID="rQy-Aj-QTH">
@@ -1151,7 +1148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yvb-MS-RJs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2398.5507246376815" y="109.82142857142857"/>
+            <point key="canvasLocation" x="2430" y="108"/>
         </scene>
         <!--TabBarController-->
         <scene sceneID="44N-C4-bnl">
@@ -1163,8 +1160,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="bXq-bU-CsG"/>
-        <segue reference="hDe-d1-sxU"/>
+        <segue reference="o8K-yp-H2Z"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="apple" width="24" height="24"/>
