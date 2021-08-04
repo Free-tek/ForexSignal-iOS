@@ -217,15 +217,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                             let itemTradeOutcome = itemObject?["trade_outcome"]
                             let itemTradePrice = itemObject?["trade_price"]
                             let itemTradeProfit = itemObject?["trade_profit"]
-                            
-                            let dateFormatterGet = DateFormatter()
-                                    dateFormatterGet.dateFormat = "dd-MM-yyyy HH:mm:ss"
-
-                            let dateFormatterPrint = DateFormatter()
-                            dateFormatterPrint.dateFormat = "dd-MM-yy HH:mm"
-
-                            let date: Date? = dateFormatterGet.date(from: (itemSignalTime as! String?)!)
-                            let _itemSignalTime = dateFormatterPrint.string(from: date!)
+                        
+                            let date = (itemSignalTime as! String?)!
+                            let _itemSignalTime = date.subString(start: 0, end: date.count - 3)
                            
                             //creating itemGotten object with model and fetched values
                             let itemGotten = SignalsItemModel(itemCurrency: itemCurrency as! String?, itemDecision: itemDecision as! String?, itemImage: itemImage, itemSignalTime: _itemSignalTime, itemStopLoss: itemStopLoss as! String?, itemTimeStamp: itemTimeStamp as! Int?, itemTradeOutcome: itemTradeOutcome as! String?, itemTradePrice: itemTradePrice as! String?, itemTradeProfit: itemTradeProfit as! String?)
@@ -290,12 +284,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 
         //set cell name and price
-        cell.signalCurrency.text = item.itemCurrency
-        cell.signalDate.text = item.itemSignalTime
+        cell.signalCurrency.text = item.itemCurrency!
+        cell.signalDate.text = item.itemSignalTime!
         cell.tradePrice.text = item.itemTradePrice
         cell.takeProfit.text = item.itemTradeProfit
         cell.stopLoss.text = item.itemStopLoss
         cell.decision.text = item.itemDecision
+        
+        cell.signalCurrency.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        cell.signalDate.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         
 
         let tradeProfit = Double(item.itemTradeProfit!)
@@ -374,4 +371,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     }
 
+}
+
+extension String {
+    func subString(start: Int, end: Int) -> String {
+        let startIndex = self.index(self.startIndex, offsetBy: start)
+        let endIndex = self.index(startIndex, offsetBy: end)
+
+        let finalString = self.substring(from: startIndex)
+        return finalString.substring(to: endIndex)
+    }
 }

@@ -54,14 +54,14 @@ class ProfileViewController: UIViewController {
         editProfile.layer.shadowColor = UIColor.black.cgColor
         editProfile.layer.shadowOpacity = 1
         editProfile.layer.shadowOffset = .zero
-        editProfile.layer.shadowRadius = 3
+        editProfile.layer.shadowRadius = 1
         editProfile.layer.cornerRadius = 10
         
         contactUs.layer.cornerRadius = 10
         contactUs.layer.shadowColor = UIColor.black.cgColor
         contactUs.layer.shadowOpacity = 1
         contactUs.layer.shadowOffset = .zero
-        contactUs.layer.shadowRadius = 3
+        contactUs.layer.shadowRadius = 1
         contactUs.layer.cornerRadius = 10
         
         
@@ -70,6 +70,9 @@ class ProfileViewController: UIViewController {
         surname.isEnabled = false
         
         updateProfile.layer.cornerRadius = 10
+        
+        editProfile.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+        contactUs.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
     }
     
     func getData(){
